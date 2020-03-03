@@ -111,3 +111,7 @@ const openTopBottom = () => {
   }
   return board;
 };
+
+module.exports = {
+  castle: castle
+}
