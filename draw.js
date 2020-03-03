@@ -1,12 +1,6 @@
-// const readLine = require('readline-sync');
-
-const player = {x: [1, 2],
-                y: [3, 4]
+const player = {x: [1, 1, 2, 2],
+                y: [3, 4, 3, 4]
               }
-/* 
-const movePlayer = (player) => {
-  let pressedKey = readlineSync
-} */
 
 const board = [
   [0, 0, 0, 0, 0],
@@ -18,7 +12,7 @@ const board = [
 
 
 
-const draw = (board, player) => {
+/* const drawv1 = (board, player) => {
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
       for (let k = 0; k < player.x.length; k++) {
@@ -32,12 +26,33 @@ const draw = (board, player) => {
   }
   console.log(board);
   setInterval(console.clear, 500);
+} */
+
+// setInterval(drawv1, 500, board, player);
+
+const isPlayerCord = (x, y, player) =>{
+  for (let k = 0; k < player.x.length; k++) {
+    if (x === player.x[k] && y === player.y[k]) {
+      return true;
+    }
+  }
+  return false;
 }
 
-const isPlayerCords = (x, y, player) => {
-  for (let i = 0; i < player.x.length; i++) {
-    board[player.x[i]][player.y[i]] = 1;
+const draw = (board, player) => {
+  let line = "";
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+      if (isPlayerCord(i, j, player) === true) {
+        line += ' 1';
+      } else {
+        line += ' 0';
+      }
+    }
+    line += '\n';
   }
+  console.log(line);
+  setInterval(console.clear, 500);
 }
 
 setInterval(draw, 500, board, player);
