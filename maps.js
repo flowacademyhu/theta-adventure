@@ -81,8 +81,7 @@ const castle = [
   [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
-console.log(openFourSide());
-const openTopBottom = () => {
+const openSides = () => {
   const board = mapgen(30, 30);
   fill(board);
   for (let i = 0; i < 11; i++) {
@@ -90,7 +89,7 @@ const openTopBottom = () => {
     board[i][j] = 1;
   }
   for (let i = 19; i < 30; i++) {
-    const j = 0; 
+    const j = 0;
     board[i][j] = 1;
   }
   for (let j = 0; j < 30; j++) {
@@ -107,6 +106,127 @@ const openTopBottom = () => {
   }
   for (let j = 0; j < 30; j++) {
     const i = 29;
+    board[i][j] = 1;
+  }
+  return board;
+};
+const openUpSides = () => {
+  const board = mapgen(30, 30);
+  fill(board);
+  for (let j = 0; j < 11; j++) {
+    const i = 0;
+    board[i][j] = 1;
+  }
+  for (let j = 19; j < 30; j++) {
+    const i = 0;
+    board[i][j] = 1;
+  }
+  for (let j = 0; j < 30; j++) {
+    const i = 29;
+    board[i][j] = 1;
+  }
+  return board;
+};
+const openBottom = () => {
+  const board = mapgen(30, 30);
+  fill(board);
+  for (let i = 0; i < 30; i++) {
+    const j = 0;
+    board[i][j] = 1;
+  }
+  for (let j = 0; j < 30; j++) {
+    const i = 0;
+    board[i][j] = 1;
+  }
+  for (let j = 0; j < 11; j++) {
+    const i = 29;
+    board[i][j] = 1;
+  }
+  for (let i = 0; i < 30; i++) {
+    const j = 29;
+    board[i][j] = 1;
+  }
+  for (let j = 19; j < 30; j++) {
+    const i = 29;
+    board[i][j] = 1;
+  }
+  return board;
+};
+const openRight = () => {
+  const board = mapgen(30, 30);
+  fill(board);
+  for (let i = 0; i < 30; i++) {
+    const j = 0;
+    board[i][j] = 1;
+  }
+  for (let j = 0; j < 30; j++) {
+    const i = 0;
+    board[i][j] = 1;
+  }
+  for (let j = 0; j < 30; j++) {
+    const i = 29;
+    board[i][j] = 1;
+  }
+  for (let i = 0; i < 11; i++) {
+    const j = 29;
+    board[i][j] = 1;
+  }
+  for (let i = 19; i < 30; i++) {
+    const j = 29;
+    board[i][j] = 1;
+  }
+  return board;
+};
+const openUp = () => {
+  const board = mapgen(30, 30);
+  fill(board);
+  for (let i = 0; i < 30; i++) {
+    const j = 29;
+    board[i][j] = 1;
+  }
+  for (let i = 0; i < 30; i++) {
+    const j = 0; 
+    board[i][j] = 1;
+  }
+  for (let j = 0; j < 11; j++) {
+    const i = 0;
+    board[i][j] = 1;
+  }
+  for (let j = 19; j < 30; j++) {
+    const i = 0;
+    board[i][j] = 1;
+  }
+  for (let i = 0; i < 30; i++) {
+    const j = 29;
+    board[i][j] = 1;
+  }
+  for (let j = 0; j < 30; j++) {
+    const i = 29;
+    board[i][j] = 1;
+  }
+  return board;
+};
+const openLeft = () => {
+  const board = mapgen(30, 30);
+  fill(board);
+  for (let j = 0; j < 30; j++) {
+    const i = 29;
+    board[i][j] = 1;
+  }
+  for (let i = 0; i < 30; i++) {
+    const j = 29;
+    board[i][j] = 1;
+  }
+  for (let j = 0; j < 30; j++) {
+    const i = 0;
+    board[i][j] = 1;
+  }
+  for (let i = 0; i < 11; i++) {
+    const j = 0;
+    board[i][j] = 1;
+  }
+  for (let i = 19; i < 30; i++) {
+    const j = 0;
     board[i][j] = 1;
   }
   return board;
