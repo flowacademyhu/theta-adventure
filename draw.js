@@ -1,14 +1,16 @@
-const player = {x: [1, 1, 2, 2],
-                y: [3, 4, 3, 4]
+const map = require('./maps.js');
+
+const player = {x: [24, 25, 24, 25],
+                y: [14, 14, 15, 15]
               }
 
-const board = [
+/* const board = [
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0]
-];
+]; */
 
 
 
@@ -40,19 +42,51 @@ const isPlayerCord = (x, y, player) =>{
 }
 
 const draw = (board, player) => {
+  console.clear();
   let line = "";
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
       if (isPlayerCord(i, j, player) === true) {
+        line += ' *';
+      } else if (board[i][j] === 1) {
         line += ' 1';
       } else {
-        line += ' 0';
+        line += '  ';
       }
     }
     line += '\n';
   }
   console.log(line);
-  setInterval(console.clear, 500);
 }
 
-setInterval(draw, 500, board, player);
+setInterval(draw, 50, map.castle, player);
+
+const stdin = process.stdin;
+stdin.setRawMode(true);
+stdin.resume();
+stdin.setEncoding('utf8');
+stdin.on('data', (key) => {
+  if (key === 'w') {
+    for (let i = 0; i < player.x.length; i++) {
+      player.x[i]--;
+    }
+  }
+  if (key === 's') {
+    for (let i = 0; i < player.x.length; i++) {
+      player.x[i]++;
+    }
+  }
+  if (key === 'a') {
+    for (let i = 0; i < player.y.length; i++) {
+      player.y[i]--;
+    }
+  }
+  if (key === 'd') {
+    for (let i = 0; i < player.y.length; i++) {
+      player.y[i]++;
+    }
+  }
+  if (key === 'q') {
+    process.exit(0);
+  }
+});

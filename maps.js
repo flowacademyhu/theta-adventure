@@ -231,7 +231,3 @@ const openLeft = () => {
   }
   return board;
 };
-module.exports = {
-  mapgen: mapgen,
-  fill: fill
-};
