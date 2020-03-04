@@ -31,4 +31,3 @@ stdin.on('data', (key) => {
   }
   console.log(player);
 });
-
