@@ -1,4 +1,5 @@
-const player = { x: [1, 1, 2, 2], y: [3, 4, 3, 4]};
+
+const player = { x: [1, 1, 2, 2], y: [3, 4, 3, 4] };
 
 const stdin = process.stdin;
 stdin.setRawMode(true);
@@ -26,7 +27,8 @@ stdin.on('data', (key) => {
     }
   }
   if (key === 'q') {
-    process.exit(0);
+    process.exit(0); 
   }
   console.log(player);
 });
+
