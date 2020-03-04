@@ -1,7 +1,9 @@
 const map = require('./maps.js');
 
-const player = {x: [24, 25, 24, 25],
+const player = {coords: coords = {
+                x: [24, 25, 24, 25],
                 y: [14, 14, 15, 15]
+                                }
               }
 
 /* const board = [
@@ -33,8 +35,8 @@ const player = {x: [24, 25, 24, 25],
 // setInterval(drawv1, 500, board, player);
 
 const isPlayerCord = (x, y, player) =>{
-  for (let k = 0; k < player.x.length; k++) {
-    if (x === player.x[k] && y === player.y[k]) {
+  for (let k = 0; k < player.coords.x.length; k++) {
+    if (x === player.coords.x[k] && y === player.coords.y[k]) {
       return true;
     }
   }
@@ -67,23 +69,23 @@ stdin.resume();
 stdin.setEncoding('utf8');
 stdin.on('data', (key) => {
   if (key === 'w') {
-    for (let i = 0; i < player.x.length; i++) {
-      player.x[i]--;
+    for (let i = 0; i < player.coords.x.length; i++) {
+      player.coords.x[i]--;
     }
   }
   if (key === 's') {
-    for (let i = 0; i < player.x.length; i++) {
-      player.x[i]++;
+    for (let i = 0; i < player.coords.x.length; i++) {
+      player.coords.x[i]++;
     }
   }
   if (key === 'a') {
-    for (let i = 0; i < player.y.length; i++) {
-      player.y[i]--;
+    for (let i = 0; i < player.coords.y.length; i++) {
+      player.coords.y[i]--;
     }
   }
   if (key === 'd') {
-    for (let i = 0; i < player.y.length; i++) {
-      player.y[i]++;
+    for (let i = 0; i < player.coords.y.length; i++) {
+      player.coords.y[i]++;
     }
   }
   if (key === 'q') {
