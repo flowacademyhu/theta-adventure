@@ -35,7 +35,8 @@ const moveRight = (player,map) => {
   for (let i = 0; i < player.coords.y.length; i++) {
     if (player.coords.y[i] && player.coords.y[i + 1] === 0) {
       player.coords.y[i]++;
-    }else {player.coords.y[i]--;
+    }else {
+      player.coords.y[i]--;
     } 
 }
 
