@@ -1,4 +1,4 @@
-const map = require('./maps.js');
+const map = require('./mapreader.js');
 const inventory = require('./inventory.js')
 
 const player = {coords: coords = {
@@ -60,8 +60,8 @@ const draw = (board, player, key1) => {
     for (let j = 0; j < board[i].length; j++) {
       if (isPlayerCord(i, j, player) === true) {
         line += ' *';
-      } else if (isKey1Cord(i, j, key1) === true) {
-        inventory.keyCoord();
+      } else if (isKey1Cord(i, j, inventory.key1) === true) {
+        line += ' >';
       } else if (board[i][j] === 1) {
         line += ' 1';
       } else {
@@ -75,9 +75,9 @@ const draw = (board, player, key1) => {
   console.log(Object.values(inventory.inventory));
 }
 
-setInterval(draw, 50, map.castle, player, inventory.key1);
+// setInterval(draw, 50, map.mapreader, player, inventory.key1);
 
-const stdin = process.stdin;
+/* const stdin = process.stdin;
 stdin.setRawMode(true);
 stdin.resume();
 stdin.setEncoding('utf8');
@@ -105,9 +105,10 @@ stdin.on('data', (key) => {
   if (key === 'q') {
     process.exit(0);
   }
-});
+}); */
 
 module.exports = {
   isPlayerCord: isPlayerCord,
-  draw: draw
+  draw: draw,
+  player: player
 }

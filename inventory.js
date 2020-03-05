@@ -17,14 +17,11 @@ const isKeyVisible = (player, key1) => {
   return true;
 }
 
-const keyCoord = () => {
-  line += 'o'
-  line += '-'
-}
+/* const keyCoord = () => { 
+} */
 
 module.exports = {
   inventory: inventory,
   key1: key1,
   isKeyVisible: isKeyVisible,
-  keyCoord: keyCoord
 }
