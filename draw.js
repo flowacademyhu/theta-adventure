@@ -42,7 +42,6 @@ const draw = (board, player) => {
   console.log(line);
   console.log('Your inventory:')
   console.log(player)
-  console.log(minimap.currentBoard)
   console.log(minimap.currentBoardCoords.x, minimap.currentBoardCoords.y)
   console.log(Object.values(inventory.inventory));
 }
