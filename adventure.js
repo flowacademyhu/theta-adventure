@@ -34,6 +34,4 @@ stdin.on('data', (key) => {
     }
 });
 
-
-
-setInterval(draw.draw, 50, map.mapreader(), draw.player);
+setInterval(() => { draw.draw(map.mapreader(), draw.player)}, 50);

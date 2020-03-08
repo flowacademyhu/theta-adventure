@@ -64,7 +64,7 @@ const moveUp = (player, map) => {
     player.coords.x[i]--;
     }
   }
-  minimap.changeMap(player);
+  minimap.changeMapUp(player);
 }
 
 const moveDown = (player, map) => {
@@ -75,7 +75,7 @@ const moveDown = (player, map) => {
     player.coords.x[i]++;
     }
   }
-  minimap.changeMap(player);
+  minimap.changeMapDown(player);
 }
 
 const moveLeft = (player, map) => {
@@ -86,7 +86,7 @@ const moveLeft = (player, map) => {
     player.coords.y[i]--;
     }
   }
-  minimap.changeMap(player);
+  minimap.changeMapLeft(player);
 }
 
 const moveRight = (player, map) => {
@@ -97,7 +97,7 @@ const moveRight = (player, map) => {
     player.coords.y[i]++;
     }
   }
-  minimap.changeMap(player);
+  minimap.changeMapRight(player);
 }
 
 module.exports = {

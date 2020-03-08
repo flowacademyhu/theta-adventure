@@ -1,5 +1,6 @@
 const inventory = require('./inventory');
 const minimap = require('./minimap.js');
+const map = require('./mapreader.js')
 
 const player = {coords: coords = {
                 x: [24, 25, 24, 25],
@@ -41,8 +42,6 @@ const draw = (board, player) => {
   }
   console.log(line);
   console.log('Your inventory:')
-  console.log(player)
-  console.log(minimap.currentBoardCoords.x, minimap.currentBoardCoords.y)
   console.log(Object.values(inventory.inventory));
 }
 

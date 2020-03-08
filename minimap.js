@@ -1,40 +1,65 @@
 
 const minimap = [
-  ['vmi', 'castle.txt'], 
-  ['vmi2', 'garden.txt']]
+  ['vmi.txt', 'castle.txt'], 
+  ['vmi.txt', 'garden.txt', 'vmi2.txt']]
 
-const currentBoardCoords = {x: 1, y: 1}
+const currentBoardCoords = {x: 0, y: 1}
 
-const changeMap = (player) => {
-  for (let i = 0; i < player.coords.x.length; i++) {
-    if (player.coords.x[i] > 30) {
+const changeMapDown = (player) => {
+  for (let i = 0; i < player.coords.x.length; i++) {  // down movement
+    if (player.coords.x[i] > 28) {
       currentBoardCoords.x ++;
       for (let j = 0; j < player.coords.x.length; j++) {
-        player.coords.x[j] -= 29;
+        player.coords.x[j] -= 27;
       }
-    } else if (player.coords.x[i] < 2) {
-      for (let j = 0; j < player.coords.x.length; j++) {
-        player.coords.x[j] += 29;
-      }
-      currentBoardCoords.x--;
-    } else if (player.coords.y[i] > 30) {
-      for (let j = 0; j < player.coords.y.length; j++) {
-        player.coords.y[j] -= 29;
-      }
-      currentBoardCoords.y++;
-    } else if (player.coords.y[i] < 2) {
-      for (let j = 0; j < player.coords.y.length; j++) {
-        player.coords.y[j] += 29;
-      }
-      currentBoardCoords.y--;
     }
   }
+  return;
 }
+
+const changeMapUp = (player) => {
+  for (let i = 0; i < player.coords.x.length; i++) { 
+    if (player.coords.x[i] < 1) {  // up movement
+      currentBoardCoords.x--;
+      for (let j = 0; j < player.coords.x.length; j++) {
+        player.coords.x[j] += 27;
+      }
+    }
+  }
+  return;
+}
+    
+const changeMapRight = (player) => {
+  for (let i = 0; i < player.coords.x.length; i++) {
+    if (player.coords.y[i] > 28) { // right movement
+      currentBoardCoords.y++;
+      for (let j = 0; j < player.coords.y.length; j++) {
+        player.coords.y[j] -= 27;
+      }
+    }
+  }
+  return;
+}
+
+const changeMapLeft = (player) => {
+  for (let i = 0; i < player.coords.x.length; i++) {
+    if (player.coords.y[i] < 1) {  // left movement
+      currentBoardCoords.y--;
+      for (let j = 0; j < player.coords.y.length; j++) {
+        player.coords.y[j] += 27;
+      }
+    }
+  }
+  return;
+}
+
 
 
 module.exports = {
   minimap: minimap,
-  // currentBoard: currentBoard,
-  changeMap: changeMap,
+  changeMapDown: changeMapDown,
+  changeMapLeft: changeMapLeft,
+  changeMapRight: changeMapRight,
+  changeMapUp, changeMapUp,
   currentBoardCoords: currentBoardCoords
 }

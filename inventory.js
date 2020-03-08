@@ -1,3 +1,4 @@
+const minimap = require('./minimap.js')
 
 const inventory = {slot1: [], slot2: [], slot3: []};
 
@@ -8,6 +9,7 @@ const key1 = {coords: coords = {
 }
 
 const isKeyCord = (x, y, key1) => {
+  if(minimap.currentBoardCoords.x === 1 && minimap.currentBoardCoords.y === 0) {
     for (let k = 0; k < key1.coords.x.length; k++) {
       if (x === key1.coords.x[k] && y === key1.coords.y[k] && key1.exists === true) {
         return true;
@@ -15,6 +17,7 @@ const isKeyCord = (x, y, key1) => {
     }
     return false;
   }
+}
 
   const pickUp = (player, key, inventory) => {
     for (let i = 0; i < player.coords.x.length; i++) {
