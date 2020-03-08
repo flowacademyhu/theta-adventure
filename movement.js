@@ -25,7 +25,7 @@ const moveUp = (player, map) => {
 }
 const moveLeft = (player, map) => {
   for (let i = 0; i < player.coords.y.length; i++) {
-    if (map[player.coords.[x]][player.coords.y[i] - 1 !== 1]) {
+    if (map[player.coords.y[i]][player.coords.y[i] - 1 !== 1]) {
       player.coords.y[i]--;
     }else {
       player.coords.y[i]++;
@@ -38,5 +38,11 @@ const moveRight = (player,map) => {
     }else {
       player.coords.y[i]--;
     } 
-}
+};
 
+module.exports = {
+  moveUp: moveUp,
+  moveDown: moveDown,
+  moveLeft: moveLeft,
+  moveRight: moveRight
+};

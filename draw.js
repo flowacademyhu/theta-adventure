@@ -1,8 +1,9 @@
 const map = require('./maps.js');
 
-const player = {x: [24, 25, 24, 25],
-                y: [14, 14, 15, 15]
-              }
+const player = {
+ x: [24, 25, 24, 25],
+  y: [14, 14, 15, 15]
+};
 
 /* const board = [
   [0, 0, 0, 0, 0],
@@ -11,8 +12,6 @@ const player = {x: [24, 25, 24, 25],
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0]
 ]; */
-
-
 
 /* const drawv1 = (board, player) => {
   for (let i = 0; i < board.length; i++) {
@@ -32,18 +31,18 @@ const player = {x: [24, 25, 24, 25],
 
 // setInterval(drawv1, 500, board, player);
 
-const isPlayerCord = (x, y, player) =>{
+const isPlayerCord = (x, y, player) => {
   for (let k = 0; k < player.x.length; k++) {
     if (x === player.x[k] && y === player.y[k]) {
       return true;
     }
   }
   return false;
-}
+};
 
 const draw = (board, player) => {
   console.clear();
-  let line = "";
+  let line = '';
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
       if (isPlayerCord(i, j, player) === true) {
@@ -57,7 +56,7 @@ const draw = (board, player) => {
     line += '\n';
   }
   console.log(line);
-}
+};
 
 setInterval(draw, 50, map.castle, player);
 
