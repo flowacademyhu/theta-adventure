@@ -22,4 +22,5 @@ const enemyPatrol = (enemy, map) => {
 module.exports = {
   enemy: enemy,
   enemyPatrol: enemyPatrol
+  
 };
