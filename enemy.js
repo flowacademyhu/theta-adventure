@@ -25,4 +25,8 @@ const enemyMove = (player, enemy, map) => {
     }
   }
 };
-setInterval(draw, 50, castle, player, enemy);
+
+module.exports = {
+  enemy: enemy,
+  enemyMove: enemyMove
+}
