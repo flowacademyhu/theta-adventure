@@ -1,10 +1,10 @@
-// const drawn = require('./draw.js');
-// const map = require('./mapreader.js');
-// const movement = require('./movement.js');
+const drawn = require('./draw.js');
+const map = require('./mapreader.js');
+const movement = require('./movement.js');
 
 const enemy = {
   coords: coords = {
-    x: [15],
+    x: [3],
     y: [27]
   }
 };
@@ -29,4 +29,4 @@ const enemyMove = (player, enemy, map) => {
 module.exports = {
   enemy: enemy,
   enemyMove: enemyMove
-}
+};
