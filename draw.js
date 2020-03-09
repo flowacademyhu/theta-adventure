@@ -1,7 +1,8 @@
 const inventory = require('./inventory');
-const minimap = require('./minimap.js');
+// const minimap = require('./minimap.js');
 const map = require('./mapreader.js')
 const enemy = require('./enemy.js')
+const gates = require('./gates.js')
 
 const player = {coords: coords = {
                 x: [24, 25, 24, 25],
@@ -27,6 +28,10 @@ const draw = (board, player) => {
     for (let j = 0; j < board[i].length; j++) {
       if (isPlayerCord(i, j, player) === true) {
         line += ' *';
+      } else if (gates.isGate1(i, j, gates.gate1) === true) {
+        line += ' #';
+      } else if (gates.isGate2(i, j, gates.gate2) === true) {
+        line += ' #';
       } else if (enemy.isEnemyCord(i, j, enemy.enemy) === true) {
         line += ' $';
       } else if (board[i][j] === 1) {
@@ -37,6 +42,8 @@ const draw = (board, player) => {
         line += '--';
       } else if (inventory.isKey1Cord(i, j, inventory.key1) === true) {
         line += 'o-';
+      } else if (inventory.isKey2Cord(i, j, inventory.key2) === true) {
+        line += '=0';
       } else {
         line += '  ';
       }
@@ -44,6 +51,7 @@ const draw = (board, player) => {
     line += '\n';
   }
   console.log(line);
+  console.log(player.coords)
   console.log('Your inventory:')
   console.log(Object.values(inventory.inventory));
 }

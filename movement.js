@@ -1,4 +1,5 @@
 const minimap = require('./minimap.js')
+const gates = require('./gates.js')
 
 const collisonUp = (player, map) => {
   let collison = false;
@@ -57,7 +58,9 @@ const collisonRight = (player, map) => {
 }
 
 const moveUp = (player, map) => {
-  if (collisonUp(player, map) === true) {
+  if (collisonUp(player, map) === true || gates.collisonGate1(player, gates.gate1, map) === true) {
+    return;
+  } else if (collisonUp(player, map) === true || gates.collisonGate2(player, gates.gate2, map) === true) {
     return;
   } else {
     for (let i = 0; i < player.coords.x.length; i++) {
@@ -104,5 +107,5 @@ module.exports = {
   moveDown: moveDown,
   moveUp: moveUp,
   moveLeft: moveLeft,
-  moveRight: moveRight
+  moveRight: moveRight,
 }
