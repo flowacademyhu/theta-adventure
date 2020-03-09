@@ -5,22 +5,31 @@ const enemy = {
   }
 };
 
-
-const enemyPatrol = (enemy, map) => {
-  for (let i = 0; i < enemy.coords.x.length; i++) {
-    for (let j = 0; j < enemy.coords.y.length; j++) {
-      if (map[enemy.coords.y[0]] <= map[enemy.coords.y[29]]) {
-        enemy.coords.y[0]++;
-      if (map[enemy.coords.y[0]] === map[enemy.coords.y[29]]) {
-        enemy.coords.y[29]--;
+const enemyPatrolY = (enemy, map) => {
+  for (let i = 0; i < enemy.coords.y.length; i++) {
+    if (map[enemy.coords.y[i]] <= 29) {
+      enemy.coords.y[i]++;
+      if (map[enemy.coords.y[i]] === 29) {
+        enemy.coords.y[i]--;
       }
-
     }
   }
 };
 
+const enemyPatrolX = (enemy, map) => {
+  for (let j = 0; j < enemy.coords.x.length; j++) {
+    if (map[enemy.coords.x[j]] <= 29) {
+      enemy.coords.x[j]++;
+      if (map[enemy.coords.x[j]] === 29) {
+        enemy.coords.x[j]--;
+      }
+    }
+  }
+
+};
+
 module.exports = {
   enemy: enemy,
-  enemyPatrol: enemyPatrol
-  
+  enemyPatrolY: enemyPatrolY,
+  enemyPatrolX: enemyPatrolX
 };
