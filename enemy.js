@@ -11,7 +11,7 @@ const enemy = {
 };
 
 const isEnemyCord = (x, y, enemy) => {
-  if (minimap.currentBoardCoords.x === 1 && minimap.currentBoardCoords.y === 2) {
+  if (minimap.currentBoardCoords.x === 2 && minimap.currentBoardCoords.y === 4) {
     for (let k = 0; k < enemy.coords.x.length; k++) {
       if (x === enemy.coords.x[k] && y === enemy.coords.y[k]) {
         return true;
