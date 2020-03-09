@@ -8,7 +8,7 @@ const key1 = {coords: coords = {
               exists: true
 }
 
-const isKeyCord = (x, y, key1) => {
+const isKey1Cord = (x, y, key1) => {
   if(minimap.currentBoardCoords.x === 1 && minimap.currentBoardCoords.y === 0) {
     for (let k = 0; k < key1.coords.x.length; k++) {
       if (x === key1.coords.x[k] && y === key1.coords.y[k] && key1.exists === true) {
@@ -19,7 +19,7 @@ const isKeyCord = (x, y, key1) => {
   }
 }
 
-  const pickUp = (player, key, inventory) => {
+  const pickUpKey1 = (player, key, inventory) => {
     for (let i = 0; i < player.coords.x.length; i++) {
       if (player.coords.x[i] === key.coords.x[0] && player.coords.y[i] === key.coords.y[0]) {
         key.exists = false;
@@ -33,6 +33,6 @@ const isKeyCord = (x, y, key1) => {
 module.exports = {
   inventory: inventory,
   key1: key1,
-  isKeyCord: isKeyCord,
-  pickUp: pickUp
+  isKey1Cord: isKey1Cord,
+  pickUpKey1: pickUpKey1
 }

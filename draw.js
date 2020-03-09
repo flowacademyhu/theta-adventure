@@ -35,7 +35,7 @@ const draw = (board, player) => {
         line += ' o';
       } else if (board[i][j] === 3) {
         line += '--';
-      } else if (inventory.isKeyCord(i, j, inventory.key1) === true) {
+      } else if (inventory.isKey1Cord(i, j, inventory.key1) === true) {
         line += 'o-';
       } else {
         line += '  ';

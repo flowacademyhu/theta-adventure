@@ -26,7 +26,7 @@ stdin.on('data', (key) => {
     }
 
   if (key === 'e') {
-    inventory.pickUp(draw.player, inventory.key1, inventory.inventory)
+    inventory.pickUpKey1(draw.player, inventory.key1, inventory.inventory)
   }
   
   if (key === 'q') {
