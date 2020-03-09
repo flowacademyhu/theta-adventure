@@ -21,7 +21,6 @@ const isEnemyCord = (x, y, enemy) => {
   return false;
 }
 
-const enemyMove
 
 module.exports = {
   enemy: enemy,
