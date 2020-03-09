@@ -37,9 +37,13 @@ const collisonGate1 = (player, gate1, map) => {
 const openGate1 = (player, gate1, inventory) => {
   if (collisonGate1(player, gate1, map.mapreader()) === true && inventory.includes('o-')) {
     gate1.exists = false;
+    for (let i = 0; i < inventory.length; i++) {
+      if (inventory[i] === 'o-') {
+        delete inventory[i];
   }
 }
-
+  }
+}
 const gate2 = {coords: coords = {
   x: [20, 20, 21, 22, 21, 22, 21, 22, 21, 22, 23, 23, 23, 23],
   y: [10, 11, 9, 9, 10, 10, 11, 11, 12, 12, 9, 10, 11, 12]},
@@ -75,6 +79,11 @@ const collisonGate2 = (player, gate2, map) => {
 const openGate2 = (player, gate2, inventory) => {
   if (collisonGate2(player, gate2, map.mapreader()) === true && inventory.includes('=0')) {
     gate2.exists = false;
+    for (let i = 0; i < inventory.length; i++) {
+      if (inventory[i] === '=0') {
+        delete inventory[i]
+      }
+    }
   }
 }
 
