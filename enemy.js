@@ -1,6 +1,7 @@
 const drawn = require('./draw.js');
 const map = require('./mapreader.js');
 const movement = require('./movement.js');
+const minimap = require('./minimap.js')
 
 const enemy = {
   coords: coords = {
@@ -9,24 +10,20 @@ const enemy = {
   }
 };
 
-const enemyMove = (player, enemy, map) => {
-  for (let i = 0; i < player.coords.x.length; i++) {
-    for (let j = 0; j < player.coords.y.length; j++) {
-      if (map[enemy.coords.x[0]] < map[player.coords.x[i]] && map[enemy.coords.x[0]] === 0) {
-        enemy.coords.x[0]++;
-      } else {
-        enemy.coords.x[0]--;
-      }
-      if (map[enemy.coords.y[0]] < map[player.coords.y[j]] && map[enemy.coords.y[0]] === 0) {
-        enemy.coords.y[0]++;
-      } else {
-        enemy.coords.y[0]--;
+const isEnemyCord = (x, y, enemy) => {
+  if (minimap.currentBoardCoords.x === 1 && minimap.currentBoardCoords.y === 2) {
+    for (let k = 0; k < enemy.coords.x.length; k++) {
+      if (x === enemy.coords.x[k] && y === enemy.coords.y[k]) {
+        return true;
       }
     }
   }
-};
+  return false;
+}
+
+const enemyMove
 
 module.exports = {
   enemy: enemy,
-  enemyMove: enemyMove
+  isEnemyCord: isEnemyCord
 }

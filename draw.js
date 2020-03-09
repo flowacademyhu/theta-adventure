@@ -1,6 +1,7 @@
 const inventory = require('./inventory');
 const minimap = require('./minimap.js');
 const map = require('./mapreader.js')
+const enemy = require('./enemy.js')
 
 const player = {coords: coords = {
                 x: [24, 25, 24, 25],
@@ -26,6 +27,8 @@ const draw = (board, player) => {
     for (let j = 0; j < board[i].length; j++) {
       if (isPlayerCord(i, j, player) === true) {
         line += ' *';
+      } else if (enemy.isEnemyCord(i, j, enemy.enemy) === true) {
+        line += ' $';
       } else if (board[i][j] === 1) {
         line += ' 1';
       } else if (board[i][j] === 2) {
