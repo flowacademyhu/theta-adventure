@@ -20,8 +20,7 @@ const moveEnemy = () => {
       main.enemy.coords.x[0]--;
     }
   }
-}
-
+};
 
 setInterval(main.main, 50);
 setInterval(moveEnemy, 150);

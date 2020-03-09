@@ -2,7 +2,8 @@ const map = require('./minimap');
 const board = map.minimap;
 const req = require('./mapreader');
 const reader = req.mapreader;
-const printmap = require('./printmap');
+const enemymove = require('./enemy');
+
 let player = {
   x: [24, 25, 24, 25],
   y: [14, 14, 15, 15]
@@ -15,7 +16,6 @@ stdin.on('data', (key) => {
   if (key === 'w') {
     for (let i = 0; i < player.x.length; i++) {
       player.x[i]--;
-
     }
   }
   if (key === 's') {
@@ -37,14 +37,26 @@ stdin.on('data', (key) => {
     process.exit(0);
   }
 });
+
+const isEnemyCord = (x, y, enemy) => {
+  if (currentmap === board[3][2]) {
+    if (enemy.coords.x.includes(x) && enemy.coords.y.includes(y)) {
+      return true;
+    }
+  }
+  return false;
+};
+
 const printnewmap = (map, player) => {
   console.clear();
   let line = "";
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[i].length; j++) {
-      if (isPlayerCord(i, j, player) === true) {
+      if (isPlayerCord(i, j, player)) {
         line += ' *';
-      } else if (map[i][j] === 1) {
+      }  else if (isEnemyCord(i, j, enemy)) {
+        line += ' $';
+      }  else if (map[i][j] === 1) {
         line += ' 1';
       } else {
         line += '  ';
@@ -54,7 +66,7 @@ const printnewmap = (map, player) => {
   }
 
   console.log(line);
-  //console.log(player)
+  //  console.log(player)
 };
 const isPlayerCord = (x, y, player) => {
   for (let k = 0; k < player.x.length; k++) {
@@ -235,8 +247,20 @@ const connect = (player) => {
     shiftYpos(player);
     printnewmap(reader(currentmap), player);
   }
-}
+};
+let enemy = {
+  coords: {
+    x: [20],
+    y: [3]
+  }
+};
+
 const main = () => {
   connect(player);
 };
-setInterval(main, 50)
+//setInterval(main, 50);
+module.exports = {
+  main: main,
+  isEnemyCord: isEnemyCord,
+  enemy: enemy
+}
