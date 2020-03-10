@@ -1,8 +1,8 @@
 const inventory = require('./inventory');
-// const minimap = require('./minimap.js');
 const map = require('./mapreader.js')
 const enemy = require('./enemy.js')
 const gates = require('./gates.js')
+const sword = require('./sword.js')
 
 const player = {coords: coords = {
                 x: [24, 25, 24, 25],
@@ -10,20 +10,11 @@ const player = {coords: coords = {
                                 }
                 }
 
-const pickedUpSword = {
-  coordsUp: coordsUp = {
-    x: [player.coords.x[0] - 1, player.coords.x[2] - 1],
-    y: [player.coords.y[0], player.coords.y[2]]},
-  coordsDown: coordsDown = {
-    x: [player.coords.x[1] + 1, player.coords.x[3] + 1],
-    y: [player.coords.y[1], player.coords.y[3]]},
-  coordsRight: coordsRigth = {
-    x: [player.coords.x[2], player.coords.x[3]],
-    y: [player.coords.y[2] + 1, player.coords.y[3] + 1]},
-  coordsLeft: coordsLeft = {
-    x: [player.coords.x[0], player.coords.x[1]],
-    y: [player.coords.y[0] - 1, player.coords.y[1] - 1]},
-}
+let swordBladeUp = '| ';
+let swordHiltUp = 'T ';
+let swordBladeDown = '| ';
+let swordHiltDown = '+ ';
+
 
 const isPlayerCord = (x, y, player) => {
   for (let k = 0; k < player.coords.x.length; k++) {
@@ -43,14 +34,18 @@ const draw = (board, player) => {
         line += ' #';
       } else if (gates.isGate2(i, j, gates.gate2) === true) {
         line += ' #';
+      } else if (sword.drawSwordBlade(i, j, player) === true) {
+        line += swordBladeUp;
+      } else if (sword.drawSwordBlade(i, j, player) === false) {
+        line += swordBladeDown;
+      } else if (sword.drawSwordHilt(i, j, player) === true) {
+        line += swordHiltUp;
+      } else if (sword.drawSwordHilt(i, j, player) === false) {
+        line += swordHiltDown
       } else if (enemy.isEnemyCord(i, j, enemy.enemy) === true) {
         line += ' $';
       } else if (board[i][j] === 1) {
         line += ' 1';
-      } else if (board[i][j] === 2) {
-        line += ' o';
-      } else if (board[i][j] === 3) {
-        line += '--';
       } else if (inventory.isKey1Cord(i, j, inventory.key1) === true) {
         line += 'o-';
       } else if (inventory.isKey2Cord(i, j, inventory.key2) === true) {
@@ -68,7 +63,6 @@ const draw = (board, player) => {
     line += '\n';
   }
   console.log(line);
-  console.log(player.coords)
   console.log('Inventory:')
   console.log(Object.values(inventory.inventory));
 }
@@ -79,4 +73,6 @@ module.exports = {
   isPlayerCord: isPlayerCord,
   draw: draw,
   player: player,
+  swordBladeUp: swordBladeUp,
+  swordHiltUp: swordHiltUp,
  }

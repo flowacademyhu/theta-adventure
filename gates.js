@@ -1,5 +1,4 @@
 const minimap = require('./minimap.js')
-const inventory = require('./inventory.js')
 const map = require('./mapreader.js')
 
 const gate1 = {coords: coords = {

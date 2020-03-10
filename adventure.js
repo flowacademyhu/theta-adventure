@@ -4,6 +4,8 @@ const movement = require('./movement.js')
 const inventory = require('./inventory.js')
 const enemy = require('./enemy.js')
 const gates = require('./gates.js')
+const puzzle = require('./puzzle.js')
+const sword = require('./sword.js')
 
 const stdin = process.stdin;
 stdin.setRawMode(true);
@@ -30,16 +32,16 @@ stdin.on('data', (key) => {
     inventory.pickUpKey1(draw.player, inventory.key1, inventory.inventory)
     inventory.pickUpKey2(draw.player, inventory.key2, inventory.inventory)
     inventory.pickUpSword(draw.player, inventory.sword, inventory.inventory)
-  }
-
-  if (key === 'r') {
     gates.openGate1(draw.player, gates.gate1, inventory.inventory)
     gates.openGate2(draw.player, gates.gate2, inventory.inventory)
+    }
+  if (key === 'o') {
+    sword.swordPos();
   }
-  
   if (key === 'q') {
     process.exit(0); 
   }
 });
 
+setInterval(enemy.moveEnemy, 150)
 setInterval(() => { draw.draw(map.mapreader(), draw.player)}, 50);
