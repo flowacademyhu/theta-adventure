@@ -231,3 +231,7 @@ const openLeft = () => {
   }
   return board;
 };
+
+module.exports = {
+  castle: castle
+}

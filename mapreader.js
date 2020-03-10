@@ -1,7 +1,12 @@
 const fs = require('fs');
-const mapreader = (minimap) => {
+const minimap = require('./minimap.js')
+
+let currentBoard = minimap.minimap[minimap.currentBoardCoords.x][minimap.currentBoardCoords.y];
+
+const mapreader = () => {
+  let currentBoard = minimap.minimap[minimap.currentBoardCoords.x][minimap.currentBoardCoords.y];
   const board = [];
-  const data = fs.readFileSync(minimap, 'utf8').split('\n');
+  const data = fs.readFileSync(currentBoard, 'utf8').split('\n');
   for (let i = 0; i < data.length - 1; i++) {
     board[i] = [];
     for (let j = 0; j < data[i].length; j++) {
@@ -11,5 +16,7 @@ const mapreader = (minimap) => {
   return board;
 };
 module.exports = {
-  mapreader: mapreader
-};
+  mapreader: mapreader,
+  currentBoard: currentBoard
+}
+// console.log(mapreader());
