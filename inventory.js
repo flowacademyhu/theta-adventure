@@ -1,4 +1,5 @@
 const minimap = require('./minimap.js')
+const colors = require('colors')
 
 const inventory = []
 

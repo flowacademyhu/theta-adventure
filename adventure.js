@@ -6,6 +6,8 @@ const enemy = require('./enemy.js')
 const gates = require('./gates.js')
 const puzzle = require('./puzzle.js')
 const sword = require('./sword.js')
+const smallerenemies = require('./smallerenemies.js')
+const colors = require('colors')
 
 const stdin = process.stdin;
 stdin.setRawMode(true);
@@ -13,19 +15,23 @@ stdin.resume();
 stdin.setEncoding('utf8');
 stdin.on('data', (key) => {
   if (key === 's') {
-    movement.moveDown(draw.player, map.mapreader())
+    movement.moveDown(draw.player, map.mapreader());
+    // movement.enemyCollisonDown(draw.player, enemy.enemy, map.mapreader());
     }
 
   if (key === 'w') {
-    movement.moveUp(draw.player, map.mapreader())
+    movement.moveUp(draw.player, map.mapreader());
+    // movement.enemyCollisonUp(draw.player, enemy.enemy, map.mapreader())
     }
   
   if (key === 'a') {
-    movement.moveLeft(draw.player, map.mapreader())
+    movement.moveLeft(draw.player, map.mapreader());
+    // movement.enemyCollisonLeft(draw.player, enemy.enemy, map.mapreader());
     }
 
   if (key === 'd') {
-    movement.moveRight(draw.player, map.mapreader())
+    movement.moveRight(draw.player, map.mapreader());
+    // movement.enemyCollisonRight(draw.player, enemy.enemy, map.mapreader());
     }
 
   if (key === 'e') {
@@ -43,5 +49,15 @@ stdin.on('data', (key) => {
   }
 });
 
-setInterval(enemy.moveEnemy, 150)
+const witcher = () => {
+setInterval(smallerenemies.moveEnemy1, 100);
+setInterval(smallerenemies.moveEnemy2, 100);
+setInterval(smallerenemies.moveEnemy3, 100);
+setInterval(smallerenemies.moveEnemy4, 100);
+setInterval(enemy.moveEnemyGhost, 150);
 setInterval(() => { draw.draw(map.mapreader(), draw.player)}, 50);
+}
+
+module.exports = {
+  witcher: witcher
+}
