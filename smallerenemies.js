@@ -137,7 +137,8 @@ const moveEnemy4 = () => {
       changeArrayElementsNegative(enemy4.coords.x);
     }
   }
-}
+};
+
 module.exports = {
   isEnemy1: isEnemy1,
   enemy1: enemy1,
@@ -150,5 +151,7 @@ module.exports = {
   moveEnemy3: moveEnemy3,
   enemy4: enemy4,
   isEnemy4: isEnemy4,
-  moveEnemy4: moveEnemy4
-}
+  moveEnemy4: moveEnemy4,
+  changeArrayElementsNegative: changeArrayElementsNegative,
+  changeArrayElementsPositive: changeArrayElementsPositive
+};

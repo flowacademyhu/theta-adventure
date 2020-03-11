@@ -3,6 +3,7 @@ const board = map.minimap;
 const req = require('./mapreader');
 const reader = req.mapreader;
 const enemymove = require('./enemy');
+const collide = require('./enemycollide')
 
 let player = {
   x: [24, 25, 24, 25],
@@ -54,9 +55,9 @@ const printnewmap = (map, player) => {
     for (let j = 0; j < map[i].length; j++) {
       if (isPlayerCord(i, j, player)) {
         line += ' *';
-      }  else if (isEnemyCord(i, j, enemy)) {
+      } else if (isEnemyCord(i, j, enemy)) {
         line += ' $';
-      }  else if (map[i][j] === 1) {
+      } else if (map[i][j] === 1) {
         line += ' 1';
       } else {
         line += '  ';
@@ -250,15 +251,16 @@ const connect = (player) => {
 };
 let enemy = {
   coords: {
-    x: [20],
-    y: [3]
+    x: [20, 20, 21, 21],
+    y: [3, 4, 3, 4, 3, 4]
   }
 };
 
 const main = () => {
   connect(player);
+  collide.enemyCollide(enemy, player);
 };
-//setInterval(main, 50);
+setInterval(main, 50);
 module.exports = {
   main: main,
   isEnemyCord: isEnemyCord,

@@ -68,21 +68,23 @@ const moveSleeping = (player) => {
       }
     }
   }
-  console.log(sleepingEnemy);
-} 
+  //console.log(sleepingEnemy);
+};
 
-const movingEnemy = (player) => {
-  if (enemy5.coords.x[0] > player.coords.x[0]) {
-    change.changeArrayElementsNegative(enemy5.coords.x);
-  }
-  if (enemy5.coords.x[0] < player.coords.x[0]) {
-    change.changeArrayElementsPositive(enemy5.coords.x);
-  }
-  if (enemy5.coords.y[0] > player.coords.y[0]) {
-    change.changeArrayElementsNegative(enemy5.coords.y);
-  }
-  if (enemy5.coords.y[0] < player.coords.y[0]) {
-    change.changeArrayElementsPositive(enemy5.coords.y);
+const movingEnemy = (player, projectile) => {
+  if (map.currentBoardCoords.x === 3 && map.currentBoardCoords.y === 3) {
+    if (enemy5.coords.x[0] > player.coords.x[0]) {
+      change.changeArrayElementsNegative(enemy5.coords.x);
+    }
+    if (enemy5.coords.x[0] < player.coords.x[0]) {
+      change.changeArrayElementsPositive(enemy5.coords.x);
+    }
+    if (enemy5.coords.y[0] > player.coords.y[0]) {
+      change.changeArrayElementsNegative(enemy5.coords.y);
+    }
+    if (enemy5.coords.y[0] < player.coords.y[0]) {
+      change.changeArrayElementsPositive(enemy5.coords.y);
+    }
   }
 };
 

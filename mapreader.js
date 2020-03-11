@@ -1,5 +1,5 @@
 const fs = require('fs');
-const minimap = require('./minimap.js')
+const minimap = require('./minimap.js');
 
 let currentBoard = minimap.minimap[minimap.currentBoardCoords.x][minimap.currentBoardCoords.y];
 
@@ -18,5 +18,5 @@ const mapreader = () => {
 module.exports = {
   mapreader: mapreader,
   currentBoard: currentBoard
-}
+};
 // console.log(mapreader());
