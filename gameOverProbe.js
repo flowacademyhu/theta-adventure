@@ -1,12 +1,13 @@
 const term = require('terminal-kit').terminal
-const menuScreen = require('./menuScreen.js');
+const gameOverScreen = require('./gameOverScreen.js');
 const termMenu = require('terminal-menu');
-const adventure = require('./adventure.js');
-const readLine = require('readline-sync')
+const mainMenu = require('./menu.js');
+const adventure = require('./adventure.js')
 
-const menu = () => {
+const gameOverMenu = () => {
   term.clear();
-  menuScreen.witcher();
+  gameOverScreen.gameOverScreen();
+
   const menu = termMenu({
     width: 12,
     x: 65,
@@ -15,18 +16,17 @@ const menu = () => {
     bg: 'red'
   });
 
-  menu.write('MAIN MENU');
+  menu.write('GAME OVER');
   menu.add('New game');
-  menu.add('Controls')
+  menu.add('Main menu');
   menu.add('Quit game');
 
   menu.on('select', function(label) {
     if (label === ('New game')) {
       term.reset();
       adventure.witcher();
-    } else if (label === ('Controls')) {
-      term.reset()
-      menuScreen.controls();
+    } else if (label === ('Main menu')) {
+      mainMenu.mainMenu();
     } else if (label === ('Quit game')) {
       term.reset();
       process.exit();
@@ -37,12 +37,8 @@ const menu = () => {
   process.stdin.setRawMode(true);
   menu.on('close', function () {
     process.stdin.setRawMode(false);
-    process.stdin.end(); 
+    process.stdin.end();
   });
-}; 
+};
 
-menu();
-
-module.exports = {
-  menu: menu,
-}
+gameOverMenu();

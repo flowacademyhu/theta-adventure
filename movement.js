@@ -9,7 +9,9 @@ const collisonUp = (player, map) => {
         map[player.coords.x[0] - 1][player.coords.y[0]] === 2 || 
         map[player.coords.x[2] - 1][player.coords.y[2]] === 2 || 
         map[player.coords.x[0] - 1][player.coords.y[0]] === 3 || 
-        map[player.coords.x[2] - 1][player.coords.y[2]] === 3) {
+        map[player.coords.x[2] - 1][player.coords.y[2]] === 3 ||
+        map[player.coords.x[0] - 1][player.coords.y[0]] === 4 || 
+        map[player.coords.x[2] - 1][player.coords.y[2]] === 4 ) {
         collison = true;
         return collison;
     }
@@ -23,7 +25,9 @@ const collisonDown = (player, map) => {
       map[player.coords.x[1] + 1][player.coords.y[1]] === 2 || 
       map[player.coords.x[3] + 1][player.coords.y[3]] === 2 || 
       map[player.coords.x[1] + 1][player.coords.y[1]] === 3 || 
-      map[player.coords.x[3] + 1][player.coords.y[3]] === 3) {
+      map[player.coords.x[3] + 1][player.coords.y[3]] === 3 ||
+      map[player.coords.x[1] + 1][player.coords.y[1]] === 4 || 
+      map[player.coords.x[3] + 1][player.coords.y[3]] === 4 ) {
       collison = true;
       return collison;
     }
@@ -37,7 +41,9 @@ const collisonLeft = (player, map) => {
       map[player.coords.x[0]][player.coords.y[0] - 1] === 2 || 
       map[player.coords.x[1]][player.coords.y[1] - 1] === 2 || 
       map[player.coords.x[0]][player.coords.y[0] - 1] === 3 || 
-      map[player.coords.x[1]][player.coords.y[1] - 1] === 3) {
+      map[player.coords.x[1]][player.coords.y[1] - 1] === 3 ||
+      map[player.coords.x[0]][player.coords.y[0] - 1] === 4 || 
+      map[player.coords.x[1]][player.coords.y[1] - 1] === 4 ) {
       collison = true;
       return collison;
     }
@@ -51,7 +57,9 @@ const collisonRight = (player, map) => {
       map[player.coords.x[2]][player.coords.y[2] + 1] === 2 || 
       map[player.coords.x[3]][player.coords.y[3] + 1] === 2 || 
       map[player.coords.x[2]][player.coords.y[2] + 1] === 3 || 
-      map[player.coords.x[3]][player.coords.y[3] + 1] === 3) {
+      map[player.coords.x[3]][player.coords.y[3] + 1] === 3 ||
+      map[player.coords.x[2]][player.coords.y[2] + 1] === 4 || 
+      map[player.coords.x[3]][player.coords.y[3] + 1] === 4 ) {
       collison = true;
       return collison;
     }
@@ -62,7 +70,7 @@ const enemyCollisonDown = (player, playerBottom, enemy, map, xCord, yCord) => {
   if(minimap.currentBoardCoords.x === xCord && minimap.currentBoardCoords.y === yCord && enemy.life > 0) {
     for(let i = 0; i < playerBottom.coords.x.length; i++) {
       for (let j = 0; j < enemy.coords.x.length; j++) {
-        if (playerBottom.coords.x[i] === enemy.coords.x[j] && playerBottom.coords.y[i] === enemy.coords.y[j] && map[playerBottom.coords.x[i] - 4][playerBottom.coords.y[i]] === 0) {
+        if (playerBottom.coords.x[i] === enemy.coords.x[j] && playerBottom.coords.y[i] === enemy.coords.y[j] && map[playerBottom.coords.x[i] - 4][playerBottom.coords.y[i]] !== 1) {
           for (let k = 0; k < player.coords.x.length; k++) {
             player.coords.x[k] -= 3;
           }
@@ -77,7 +85,7 @@ const enemyCollisonUp = (player, playerTop, enemy, map, xCord, yCord) => {
   if(minimap.currentBoardCoords.x === xCord && minimap.currentBoardCoords.y === yCord && enemy.life > 0) {
     for(let i = 0; i < playerTop.coords.x.length; i++) {
       for (let j = 0; j < enemy.coords.x.length; j++) {
-        if (playerTop.coords.x[i] === enemy.coords.x[j] && playerTop.coords.y[i] === enemy.coords.y[j] && map[playerTop.coords.x[i] + 4][playerTop.coords.y[i]] === 0) {
+        if (playerTop.coords.x[i] === enemy.coords.x[j] && playerTop.coords.y[i] === enemy.coords.y[j] && map[playerTop.coords.x[i] + 4][playerTop.coords.y[i]] !== 1) {
           for (let k = 0; k < player.coords.x.length; k++) {
             player.coords.x[k] += 3;
           }
@@ -92,7 +100,7 @@ const enemyCollisonRight = (player, playerRight, enemy, map, xCord, yCord) => {
   if(minimap.currentBoardCoords.x === xCord && minimap.currentBoardCoords.y === yCord && enemy.life > 0) {
     for(let i = 0; i < playerRight.coords.x.length; i++) {
       for (let j = 0; j < enemy.coords.x.length; j++) {
-        if (playerRight.coords.x[i] === enemy.coords.x[j] && playerRight.coords.y[i] === enemy.coords.y[j] && map[playerRight.coords.x[i]][playerRight.coords.y[i] - 4] === 0) {
+        if (playerRight.coords.x[i] === enemy.coords.x[j] && playerRight.coords.y[i] === enemy.coords.y[j] && map[playerRight.coords.x[i]][playerRight.coords.y[i] - 4] !== 1) {
           for (let k = 0; k < player.coords.x.length; k++) {
             player.coords.y[k] -= 3;
           }
@@ -107,7 +115,7 @@ const enemyCollisonLeft = (player, playerLeft, enemy, map, xCord, yCord) => {
   if(minimap.currentBoardCoords.x === xCord && minimap.currentBoardCoords.y === yCord && enemy.life > 0) {
     for(let i = 0; i < playerLeft.coords.x.length; i++) {
       for (let j = 0; j < enemy.coords.x.length; j++) {
-        if (playerLeft.coords.x[i] === enemy.coords.x[j] && playerLeft.coords.y[i] === enemy.coords.y[j] && map[playerLeft.coords.x[i]][playerLeft.coords.y[i] + 4] === 0) {
+        if (playerLeft.coords.x[i] === enemy.coords.x[j] && playerLeft.coords.y[i] === enemy.coords.y[j] && map[playerLeft.coords.x[i]][playerLeft.coords.y[i] + 4] !== 1) {
           for (let k = 0; k < player.coords.x.length; k++) {
             player.coords.y[k] += 3;
           }
@@ -123,6 +131,8 @@ const moveUp = (player, map) => {
     return;
   } else if (collisonUp(player, map) === true || gates.collisonGate2(player, gates.gate2, map) === true) {
     return;
+  } else if (collisonUp(player, map) === true || gates.collisonGate3(player, gates.gate3, map) === true) {
+    return; 
   } else {
     for (let i = 0; i < player.coords.x.length; i++) {
     player.coords.x[i]--;

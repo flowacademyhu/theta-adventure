@@ -1,5 +1,6 @@
 const minimap = require('./minimap.js')
 const map = require('./mapreader.js')
+const movingenemy = require('./movingenemy.js')
 
 const gate1 = {coords: coords = {
   x: [16, 16, 17, 18, 17, 18, 17, 18, 17, 18, 19, 19, 19, 19],
@@ -86,6 +87,43 @@ const openGate2 = (player, gate2, inventory) => {
   }
 }
 
+const gate3 = {coords: coords = {
+  x: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  y: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]},
+  exists: true
+}
+
+const isGate3 = (x, y, gate3) => {
+  if (minimap.currentBoardCoords.x === 1 && minimap.currentBoardCoords.y === 2 && gate3.exists === true) {
+      for (let k = 0; k < gate3.coords.x.length; k++) {
+        if (x === gate3.coords.x[k] && y === gate3.coords.y[k]) {
+          return true;
+        }
+      }
+    return false;
+  }
+}
+
+const collisonGate3 = (player, gate3, map) => {
+  let collison = false;
+  if(minimap.currentBoardCoords.x === 1 && minimap.currentBoardCoords.y === 2) {
+    for (let i = 0; i < player.coords.x.length; i++) {
+      for (let j = 0; j < gate3.coords.x.length; j++ ) {
+        if (map[player.coords.x[i] - 1] === map[gate3.coords.x[j]] && map[player.coords.y[i] - 1] === map[gate3.coords.y[j]] && gate3.exists === true) {
+          collison = true;
+          return collison
+        }
+      }
+    }
+  }
+  return collison;
+}
+
+const openGate3 = (gate3, enemy5) => {
+  if (enemy5.life <= 0) {
+    gate3.exists = false;
+  }
+}
 
 module.exports = {
   gate1: gate1,
@@ -95,5 +133,9 @@ module.exports = {
   gate2: gate2,
   isGate2: isGate2,
   openGate2: openGate2,
-  collisonGate2: collisonGate2
+  collisonGate2: collisonGate2,
+  gate3: gate3,
+  isGate3: isGate3,
+  openGate3: openGate3,
+  collisonGate3: collisonGate3
 }
