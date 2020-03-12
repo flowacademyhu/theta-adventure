@@ -284,5 +284,7 @@ module.exports = {
   enemy4: enemy4,
   isEnemy4: isEnemy4,
   moveEnemy4: moveEnemy4,
-  enemy4Hit: enemy4Hit
+  enemy4Hit: enemy4Hit,
+  changeArrayElementsNegative: changeArrayElementsNegative,
+  changeArrayElementsPositive: changeArrayElementsPositive
 }
