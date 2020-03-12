@@ -1,6 +1,5 @@
 const minimap = require('./minimap.js')
 const gates = require('./gates.js')
-const enemy = require('./enemy.js')
 
 const collisonUp = (player, map) => {
   let collison = false;
@@ -70,9 +69,9 @@ const enemyCollisonDown = (player, playerBottom, enemy, map, xCord, yCord) => {
   if(minimap.currentBoardCoords.x === xCord && minimap.currentBoardCoords.y === yCord && enemy.life > 0) {
     for(let i = 0; i < playerBottom.coords.x.length; i++) {
       for (let j = 0; j < enemy.coords.x.length; j++) {
-        if (playerBottom.coords.x[i] === enemy.coords.x[j] && playerBottom.coords.y[i] === enemy.coords.y[j] && map[playerBottom.coords.x[i] - 4][playerBottom.coords.y[i]] !== 1) {
+        if (playerBottom.coords.x[i] === enemy.coords.x[j] && playerBottom.coords.y[i] === enemy.coords.y[j] && map[playerTop.coords.x[i] - 1][playerTop.coords.y[i]] === 0) {
           for (let k = 0; k < player.coords.x.length; k++) {
-            player.coords.x[k] -= 3;
+            player.coords.x[k] -= 1;
           }
           player.life -= 1;
         }
@@ -81,13 +80,13 @@ const enemyCollisonDown = (player, playerBottom, enemy, map, xCord, yCord) => {
   }
 }
 
-const enemyCollisonUp = (player, playerTop, enemy, map, xCord, yCord) => {
+const enemyCollisonUp = (player, playerTop, playerBottom, enemy, map, xCord, yCord) => {
   if(minimap.currentBoardCoords.x === xCord && minimap.currentBoardCoords.y === yCord && enemy.life > 0) {
     for(let i = 0; i < playerTop.coords.x.length; i++) {
       for (let j = 0; j < enemy.coords.x.length; j++) {
-        if (playerTop.coords.x[i] === enemy.coords.x[j] && playerTop.coords.y[i] === enemy.coords.y[j] && map[playerTop.coords.x[i] + 4][playerTop.coords.y[i]] !== 1) {
+        if (playerTop.coords.x[i] === enemy.coords.x[j] && playerTop.coords.y[i] === enemy.coords.y[j] && map[playerBottom.coords.x[i] + 1][playerBottom.coords.y[i]] === 0) {
           for (let k = 0; k < player.coords.x.length; k++) {
-            player.coords.x[k] += 3;
+            player.coords.x[k] += 1;
           }
           player.life -= 1;
         }
@@ -96,13 +95,13 @@ const enemyCollisonUp = (player, playerTop, enemy, map, xCord, yCord) => {
   }
 }
 
-const enemyCollisonRight = (player, playerRight, enemy, map, xCord, yCord) => {
+const enemyCollisonRight = (player, playerRight, playerLeft, enemy, map, xCord, yCord) => {
   if(minimap.currentBoardCoords.x === xCord && minimap.currentBoardCoords.y === yCord && enemy.life > 0) {
     for(let i = 0; i < playerRight.coords.x.length; i++) {
       for (let j = 0; j < enemy.coords.x.length; j++) {
-        if (playerRight.coords.x[i] === enemy.coords.x[j] && playerRight.coords.y[i] === enemy.coords.y[j] && map[playerRight.coords.x[i]][playerRight.coords.y[i] - 4] !== 1) {
+        if (playerRight.coords.x[i] === enemy.coords.x[j] && playerRight.coords.y[i] === enemy.coords.y[j] && map[playerLeft.coords.x[i]][playerLeft.coords.y[i] - 1] === 0) {
           for (let k = 0; k < player.coords.x.length; k++) {
-            player.coords.y[k] -= 3;
+            player.coords.y[k] -= 1;
           }
           player.life -= 1;
         }
@@ -111,13 +110,13 @@ const enemyCollisonRight = (player, playerRight, enemy, map, xCord, yCord) => {
   }
 }
 
-const enemyCollisonLeft = (player, playerLeft, enemy, map, xCord, yCord) => {
+const enemyCollisonLeft = (player, playerLeft, playerRight, enemy, map, xCord, yCord) => {
   if(minimap.currentBoardCoords.x === xCord && minimap.currentBoardCoords.y === yCord && enemy.life > 0) {
     for(let i = 0; i < playerLeft.coords.x.length; i++) {
       for (let j = 0; j < enemy.coords.x.length; j++) {
-        if (playerLeft.coords.x[i] === enemy.coords.x[j] && playerLeft.coords.y[i] === enemy.coords.y[j] && map[playerLeft.coords.x[i]][playerLeft.coords.y[i] + 4] !== 1) {
+        if (playerLeft.coords.x[i] === enemy.coords.x[j] && playerLeft.coords.y[i] === enemy.coords.y[j] && map[playerRight.coords.x[i]][playerRight.coords.y[i] + 1] === 0) {
           for (let k = 0; k < player.coords.x.length; k++) {
-            player.coords.y[k] += 3;
+            player.coords.y[k] += 1;
           }
         player.life -= 1;
         }

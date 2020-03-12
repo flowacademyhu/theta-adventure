@@ -1,6 +1,6 @@
 const terminal = require('terminal-kit').terminal;
 
-const witcher = () => {
+const witcherScreen = () => {
   terminal.white();
   console.log(`                                       ____            ____                        _  `);
   console.log('                                       \\   \\          /   /       __     _____    | |      _____  ___  ____');
@@ -30,6 +30,6 @@ const controls = () => {
 }
 
 module.exports = {
-  witcher: witcher,
+  witcherScreen: witcherScreen,
   controls: controls
 }

@@ -2,11 +2,11 @@ const term = require('terminal-kit').terminal
 const menuScreen = require('./menuScreen.js');
 const termMenu = require('terminal-menu');
 const adventure = require('./adventure.js');
-const readLine = require('readline-sync')
+const readLine = require('readline-sync');
 
 const menu = () => {
   term.clear();
-  menuScreen.witcher();
+  menuScreen.witcherScreen();
   const menu = termMenu({
     width: 12,
     x: 65,
@@ -25,7 +25,6 @@ const menu = () => {
       term.reset();
       adventure.witcher();
     } else if (label === ('Controls')) {
-      term.reset()
       menuScreen.controls();
     } else if (label === ('Quit game')) {
       term.reset();

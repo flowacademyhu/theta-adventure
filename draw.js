@@ -11,9 +11,11 @@ const gameOver = require('./gameOver.js');
 const gameFinished = require('./gameFinished.js');
 const movingenemy = require('./movingenemy.js');
 const minimap = require('./minimap.js')
+const menuScreen = require('./menuScreen.js')
+const menuItems = require('./menuItems.js')
 
 const player = {coords: coords = {
-                x: [24, 25, 24, 25],
+                x: [13, 14, 13, 14],
                 y: [14, 14, 15, 15]
                                 },
                 life: 5
@@ -71,53 +73,75 @@ const isPlayerCord = (x, y, player) => {
 }
 
 draw = (board, player) => {
-  console.clear()
   gates.openGate3(gates.gate3, movingenemy.enemy5);
-  if (player.life <= 0) {
-    console.clear();
-    gameOver.gameOver();
-  } else if (gameFinished.finishGame(player, 0, 2) === true) {
+  if (gameFinished.finishGame(player, 0, 2) === true) {
   console.clear();
   gameFinished.theEnd();
   } else {
+    console.clear()
   let line = "                                    ";
-  movement.enemyCollisonDown(player, playerBottomChange(player), enemy.enemyGhost, map.mapreader(), 4, 0);
-  movement.enemyCollisonRight(player, playerRightChange(player), enemy.enemyGhost, map.mapreader(), 4, 0);
-  movement.enemyCollisonLeft(player, playerLeftChange(player), enemy.enemyGhost, map.mapreader(), 4, 0);
-  movement.enemyCollisonUp(player, playerTopChange(player), enemy.enemyGhost, map.mapreader(), 4, 0);
-  movement.enemyCollisonDown(player, playerBottomChange(player), smallerenemies.enemy1, map.mapreader(), 1, 0);
-  movement.enemyCollisonRight(player, playerRightChange(player), smallerenemies.enemy1, map.mapreader(), 1, 0);
-  movement.enemyCollisonLeft(player, playerLeftChange(player), smallerenemies.enemy1, map.mapreader(), 1, 0);
-  movement.enemyCollisonUp(player, playerTopChange(player), smallerenemies.enemy1, map.mapreader(), 1, 0);
-  movement.enemyCollisonDown(player, playerBottomChange(player), smallerenemies.enemy2, map.mapreader(), 2, 0);
-  movement.enemyCollisonRight(player, playerRightChange(player), smallerenemies.enemy2, map.mapreader(), 2, 0);
-  movement.enemyCollisonLeft(player, playerLeftChange(player), smallerenemies.enemy2, map.mapreader(), 2, 0);
-  movement.enemyCollisonUp(player, playerTopChange(player), smallerenemies.enemy2, map.mapreader(), 2, 0);
-  movement.enemyCollisonDown(player, playerBottomChange(player), smallerenemies.enemy3, map.mapreader(), 2, 0);
-  movement.enemyCollisonRight(player, playerRightChange(player), smallerenemies.enemy3, map.mapreader(), 2, 0);
-  movement.enemyCollisonLeft(player, playerLeftChange(player), smallerenemies.enemy3, map.mapreader(), 2, 0);
-  movement.enemyCollisonUp(player, playerTopChange(player), smallerenemies.enemy3, map.mapreader(), 2, 0);
-  movement.enemyCollisonDown(player, playerBottomChange(player), smallerenemies.enemy4, map.mapreader(), 2, 0);
-  movement.enemyCollisonRight(player, playerRightChange(player), smallerenemies.enemy4, map.mapreader(), 2, 0);
-  movement.enemyCollisonLeft(player, playerLeftChange(player), smallerenemies.enemy4, map.mapreader(), 2, 0);
-  movement.enemyCollisonUp(player, playerTopChange(player), smallerenemies.enemy4, map.mapreader(), 2, 0);
-  movement.enemyCollisonDown(player, playerBottomChange(player), movingenemy.enemy5, map.mapreader(), 1, 2);
-  movement.enemyCollisonRight(player, playerRightChange(player), movingenemy.enemy5, map.mapreader(), 1, 2);
-  movement.enemyCollisonLeft(player, playerLeftChange(player), movingenemy.enemy5, map.mapreader(), 1, 2);
-  movement.enemyCollisonUp(player, playerTopChange(player), movingenemy.enemy5, map.mapreader(), 1, 2);
-  movement.enemyCollisonDown(player, playerBottomChange(player), movingenemy.sleepingEnemy, map.mapreader(), 2, 4);
-  movement.enemyCollisonRight(player, playerRightChange(player), movingenemy.sleepingEnemy, map.mapreader(), 2, 4);
-  movement.enemyCollisonLeft(player, playerLeftChange(player), movingenemy.sleepingEnemy, map.mapreader(), 2, 4);
-  movement.enemyCollisonUp(player, playerTopChange(player), movingenemy.sleepingEnemy, map.mapreader(), 2, 4);
+  movement.enemyCollisonDown(player, playerBottomChange(player), playerTopChange(player), enemy.enemyGhost, map.mapreader(), 4, 0);
+  movement.enemyCollisonRight(player, playerRightChange(player), playerLeftChange(player), enemy.enemyGhost, map.mapreader(), 4, 0);
+  movement.enemyCollisonLeft(player, playerLeftChange(player), playerRightChange(player), enemy.enemyGhost, map.mapreader(), 4, 0);
+  movement.enemyCollisonUp(player, playerTopChange(player), playerBottomChange(player), enemy.enemyGhost, map.mapreader(), 4, 0);
+  movement.enemyCollisonDown(player, playerBottomChange(player), playerTopChange(player), smallerenemies.enemy1, map.mapreader(), 1, 0);
+  movement.enemyCollisonRight(player, playerRightChange(player), playerLeftChange(player), smallerenemies.enemy1, map.mapreader(), 1, 0);
+  movement.enemyCollisonLeft(player, playerLeftChange(player), playerRightChange(player), smallerenemies.enemy1, map.mapreader(), 1, 0);
+  movement.enemyCollisonUp(player, playerTopChange(player), playerBottomChange(player), smallerenemies.enemy1, map.mapreader(), 1, 0);
+  movement.enemyCollisonDown(player, playerBottomChange(player), playerTopChange(player), smallerenemies.enemy2, map.mapreader(), 2, 0);
+  movement.enemyCollisonRight(player, playerRightChange(player), playerLeftChange(player), smallerenemies.enemy2, map.mapreader(), 2, 0);
+  movement.enemyCollisonLeft(player, playerLeftChange(player), playerRightChange(player), smallerenemies.enemy2, map.mapreader(), 2, 0);
+  movement.enemyCollisonUp(player, playerTopChange(player), playerBottomChange(player), smallerenemies.enemy2, map.mapreader(), 2, 0);
+  movement.enemyCollisonDown(player, playerBottomChange(player), playerTopChange(player), smallerenemies.enemy3, map.mapreader(), 2, 0);
+  movement.enemyCollisonRight(player, playerRightChange(player), playerLeftChange(player), smallerenemies.enemy3, map.mapreader(), 2, 0);
+  movement.enemyCollisonLeft(player, playerLeftChange(player), playerRightChange(player), smallerenemies.enemy3, map.mapreader(), 2, 0);
+  movement.enemyCollisonUp(player, playerTopChange(player), playerBottomChange(player), smallerenemies.enemy3, map.mapreader(), 2, 0);
+  movement.enemyCollisonDown(player, playerBottomChange(player), playerTopChange(player), smallerenemies.enemy4, map.mapreader(), 2, 0);
+  movement.enemyCollisonRight(player, playerRightChange(player), playerLeftChange(player), smallerenemies.enemy4, map.mapreader(), 2, 0);
+  movement.enemyCollisonLeft(player, playerLeftChange(player), playerRightChange(player), smallerenemies.enemy4, map.mapreader(), 2, 0);
+  movement.enemyCollisonUp(player, playerTopChange(player), playerBottomChange(player), smallerenemies.enemy4, map.mapreader(), 2, 0);
+  movement.enemyCollisonDown(player, playerBottomChange(player), playerTopChange(player), movingenemy.enemy5, map.mapreader(), 1, 2);
+  movement.enemyCollisonRight(player, playerRightChange(player), playerLeftChange(player), movingenemy.enemy5, map.mapreader(), 1, 2);
+  movement.enemyCollisonLeft(player, playerLeftChange(player), playerRightChange(player), movingenemy.enemy5, map.mapreader(), 1, 2);
+  movement.enemyCollisonUp(player, playerTopChange(player), playerBottomChange(player), movingenemy.enemy5, map.mapreader(), 1, 2);
+  movement.enemyCollisonDown(player, playerBottomChange(player), playerTopChange(player), movingenemy.sleepingEnemy, map.mapreader(), 2, 4);
+  movement.enemyCollisonRight(player, playerRightChange(player), playerLeftChange(player), movingenemy.sleepingEnemy, map.mapreader(), 2, 4);
+  movement.enemyCollisonLeft(player, playerLeftChange(player), playerRightChange(player), movingenemy.sleepingEnemy, map.mapreader(), 2, 4);
+  movement.enemyCollisonUp(player, playerTopChange(player), playerBottomChange(player), movingenemy.sleepingEnemy, map.mapreader(), 2, 4);
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
-      if (gates.isGate1(i, j, gates.gate1)) {
+      if (player.life <= 0) {
+        minimap.currentBoardCoords.x = 5
+        minimap.currentBoardCoords.y = 0
+        player.coords.x = [13, 14, 13, 14]
+        player.coords.y = [14, 14, 15, 15]
+        player.life = 'You dead boi'
+      } 
+      if(gates.isGate1(i, j, gates.gate1)) {
         line += ' #'.cyan.bgCyan;
       } else if (gates.isGate2(i, j, gates.gate2)) {
         line += ' #'.green.bgGreen;
       } else if (gates.isGate3(i, j, gates.gate3)) {
         line += ' #'.green.bgGreen;
+      } else if (menuItems.isStartButtonCord(i, j, menuItems.startButton)) {
+        line += ' S'.black.bgGreen;
+      } else if (menuItems.isQuitButtonCord(i, j, menuItems.quitButton)) {
+        line += ' Q'.black.bgRed;
+      } else if (menuItems.isReStartButtonCord(i, j, menuItems.reStartButton)) {
+        line += '  '.blue.bgBlue;
       } else if (sword.drawSwordBlade(i, j, player)) {
+        line += swordBladeUp.white.bgBlack;
+        sword.swordUp = true;
+      } else if (sword.drawSwordBlade(i, j, player) === false) {
+        line += swordBladeDown.white.bgBlack;
+        sword.swordUp = false;
+      } else if (sword.drawSwordHilt(i, j, player)) {
+        line += swordHiltUp.blue.bgBlack;
+        sword.swordUp = true;
+      } else if (sword.drawSwordHilt(i, j, player) === false) {
+        line += swordHiltDown.blue.bgBlack;
+        sword.swordUp = false;
+        } else if (sword.drawSwordBlade(i, j, player)) {
         line += swordBladeUp.white.bgBlack;
         sword.swordUp = true;
       } else if (sword.drawSwordBlade(i, j, player) === false) {
@@ -151,6 +175,8 @@ draw = (board, player) => {
         line += '  '.bgBlack;
       } else if (board[i][j] === 1 && minimap.currentBoardCoords.x === 1 && minimap.currentBoardCoords.y === 0 && !inventory.inventory.includes('--@')) {
         line += '  '.bgBlack;
+      } else if (isPlayerCord(i, j, player)) {
+          line += ' *'.yellow.bgYellow;
       } else if (board[i][j] === 1) {
         line += ' 1'.gray.bgGray;
       } else if (board[i][j] === 2) {
@@ -177,8 +203,8 @@ draw = (board, player) => {
         line += '  '.bgBlack;
       } else if (isPlayerCord(i, j, player) && minimap.currentBoardCoords.x === 1 && minimap.currentBoardCoords.y === 0 && !inventory.inventory.includes('--@')) {
         line += '  '.bgBlack;
-      } else if (isPlayerCord(i, j, player)) {
-        line += ' *'.yellow.bgYellow;
+      } else if (inventory.pack1Coord(i, j, inventory.pack1) || inventory.pack2Coord(i, j, inventory.pack2)) {
+        line += '++'.red.bgWhite;
       } else if (board[i][j] === 8) {
         line += '  '.bgGrey;
       } else {

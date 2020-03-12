@@ -116,7 +116,6 @@ const moveSleeping = (player) => {
       }
     }
   }
-  console.log(sleepingEnemy);
 } 
 
 const sleepingEnemyHit = (player, inventory, sleepingEnemy, swordUp, map) => {

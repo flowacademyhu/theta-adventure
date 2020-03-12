@@ -1,7 +1,7 @@
 const minimap = require('./minimap.js')
 const colors = require('colors')
 
-const inventory = []
+let inventory = []
 
 const key1 = {coords: coords = {
   x: [2],
@@ -39,7 +39,7 @@ const isKey1Cord = (x, y, key1) => {
 
 const pickUpKey1 = (player, key, inventory) => {
   for (let i = 0; i < player.coords.x.length; i++) {
-    if (player.coords.x[i] === key.coords.x[0] && player.coords.y[i] === key.coords.y[0] && key.exists === true) {
+    if (player.coords.x[i] === key.coords.x[0] && player.coords.y[i] === key.coords.y[0] && key.exists === true && minimap.currentBoardCoords.x === 1 && minimap.currentBoardCoords.y === 0) {
       key.exists = false;
       inventory.push('o-')
       return;
@@ -50,7 +50,7 @@ const pickUpKey1 = (player, key, inventory) => {
 
 const pickUpTorch = (player, torch, inventory) => {
   for (let i = 0; i < player.coords.x.length; i++) {
-    if (player.coords.x[i] === torch.coords.x[0] && player.coords.y[i] === torch.coords.y[0] && torch.exists === true) {
+    if (player.coords.x[i] === torch.coords.x[0] && player.coords.y[i] === torch.coords.y[0] && torch.exists === true && minimap.currentBoardCoords.x === 2 && minimap.currentBoardCoords.y === 4) {
       torch.exists = false;
       inventory.push('--@');
       return;
@@ -78,7 +78,7 @@ const isKey2Cord = (x, y, key2) => {
 
 const pickUpKey2 = (player, key, inventory) => {
   for (let i = 0; i < player.coords.x.length; i++) {
-    if (player.coords.x[i] === key.coords.x[0] && player.coords.y[i] === key.coords.y[0] && key2.exists === true) {
+    if (player.coords.x[i] === key.coords.x[0] && player.coords.y[i] === key.coords.y[0] && key2.exists === true && minimap.currentBoardCoords.x === 3 && minimap.currentBoardCoords.y === 2) {
       key.exists = false;
       inventory.push('=0')
       return;
@@ -121,13 +121,59 @@ const isSwordBladeCord = (x, y, sword) => {
 
 const pickUpSword = (player, sword, inventory) => {
   for (let i = 0; i < player.coords.x.length; i++) {
-    if (player.coords.x[i] === sword.swordHiltCoords.x[0] && player.coords.y[i] === sword.swordHiltCoords.y[0] || player.coords.x[i] === sword.swordBladeCoords.x[0] && player.coords.y[i] === sword.swordBladeCoords.y[0] && swordBladeCoords.exists === true && swordHiltCoords.exists === true) {
+    if (player.coords.x[i] === sword.swordHiltCoords.x[0] && player.coords.y[i] === sword.swordHiltCoords.y[0] || player.coords.x[i] === sword.swordBladeCoords.x[0] && player.coords.y[i] === sword.swordBladeCoords.y[0] && swordBladeCoords.exists === true && swordHiltCoords.exists === true  && minimap.currentBoardCoords.x === 4 && minimap.currentBoardCoords.y === 0) {
       sword.exists = false;
       inventory.push('-<==')
       return;
     }
   }
   return;
+}
+
+const pack1 = {
+  coords: {
+    x: [9],
+    y: [3]
+  },
+  exist: true
+};
+const pack2 = {
+  coords: {
+    x: [27],
+    y: [27]
+  },
+  exist: true
+};
+const pack1Coord = (x, y, pack) => {
+  if (minimap.currentBoardCoords.x === 1 && minimap.currentBoardCoords.y === 0) {
+    for (let i = 0; i < pack.coords.x.length; i++) {
+      if (x === pack.coords.x[i] && y === pack.coords.y[i] && pack.exist === true) {
+        return true;
+      }
+    }
+  }
+};
+
+const pack2Coord = (x, y, pack) => {
+  if (minimap.currentBoardCoords.x === 2 && minimap.currentBoardCoords.y === 2) {
+    for (let i = 0; i < pack.coords.x.length; i++) {
+      if (x === pack.coords.x[i] && y === pack.coords.y[i] && pack.exist === true) {
+        return true;
+      }
+    }
+  }
+};
+
+
+const healthpack = (player, pack) => {
+  for (let i = 0; i < player.coords.x.length; i++) {
+    if (player.life < 5 && pack.exist === true) {
+      if (player.coords.x[i] === pack.coords.x[0] || player.coords.x[i] === pack.coords.y[0] || player.coords.y[i] === pack.coords.y[0] || player.coords.y[i] === pack.coords.x[0]) {
+        pack.exist = false;
+        player.life += 5;
+      }
+    }
+  }
 }
 
 module.exports = {
@@ -144,5 +190,10 @@ module.exports = {
   pickUpSword: pickUpSword,
   torch: torch,
   isTorch: isTorch,
-  pickUpTorch: pickUpTorch
+  pickUpTorch: pickUpTorch,
+  pack1: pack1,
+  pack2: pack2,
+  pack1Coord: pack1Coord,
+  pack2Coord: pack2Coord,
+  healthpack: healthpack
 }

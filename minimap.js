@@ -1,11 +1,12 @@
 const minimap = [
-  ['undef', 'undef', 'openBottom.txt', 'undef', 'undef'],
-  ['lab1.txt', 'lab2.txt', 'insideCastle.txt', 'undef', 'undef'],
+  ['wall.txt', 'wall.txt', 'openBottom.txt', 'wall.txt', 'wall.txt'],
+  ['lab1.txt', 'lab2.txt', 'insideCastle.txt', 'wall.txt', 'wall.txt'],
   ['lab3.txt', 'lab4.txt', 'castle.txt', 'garden4.txt', 'openLeft.txt'],
-  ['undef', 'garden2.txt', 'garden.txt', 'garden3.txt', 'undef'],
-  ['insideGhostCastle.txt', 'ghostcastle.txt']]
+  ['wall.txt', 'garden2.txt', 'garden.txt', 'garden3.txt', 'wall.txt'],
+  ['insideGhostCastle.txt', 'ghostcastle.txt'],
+  ['menu.txt']]
 
-const currentBoardCoords = {x: 2, y: 2}
+const currentBoardCoords = {x: 5, y: 0}
 
 const changeMapDown = (player) => {
   for (let i = 0; i < player.coords.x.length; i++) {  // down movement
