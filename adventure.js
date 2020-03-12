@@ -42,6 +42,8 @@ stdin.on('data', (key) => {
     inventory.pickUpTorch(draw.player, inventory.torch, inventory.inventory)
     gates.openGate1(draw.player, gates.gate1, inventory.inventory)
     gates.openGate2(draw.player, gates.gate2, inventory.inventory)
+    inventory.healthpack(draw.player, inventory.pack1);
+    inventory.healthpack(draw.player, inventory.pack2);
   }
   if (key === 'o') {
     sword.swordPos();
