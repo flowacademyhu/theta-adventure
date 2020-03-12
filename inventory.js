@@ -170,7 +170,7 @@ const healthpack = (player, pack) => {
     if (player.life < 5 && pack.exist === true) {
       if (player.coords.x[i] === pack.coords.x[0] || player.coords.x[i] === pack.coords.y[0] || player.coords.y[i] === pack.coords.y[0] || player.coords.y[i] === pack.coords.x[0]) {
         pack.exist = false;
-        player.life += 5;
+        player.life = 5;
       }
     }
   }

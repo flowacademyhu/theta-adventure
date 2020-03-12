@@ -64,7 +64,7 @@ setInterval(smallerenemies.moveEnemy2, 100);
 setInterval(smallerenemies.moveEnemy3, 100);
 setInterval(smallerenemies.moveEnemy4, 100);
 setInterval(movingenemy.movingEnemy, 400, draw.player)
-setInterval(movingenemy.moveSleeping, 500, draw.player)
+setInterval(movingenemy.moveSleeping, 200, draw.player)
 setInterval(enemy.moveEnemyGhost, 50);
 setInterval(() => { draw.draw(map.mapreader(), draw.player)}, 75);
   }

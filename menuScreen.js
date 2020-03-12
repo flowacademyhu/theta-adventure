@@ -10,12 +10,12 @@ const witcherScreen = () => {
   console.log('                                           \\          /   |   |  |  |_ |  \\__/  / |  / \\ || |___ |   |')
   console.log('                                            \\___/\\___/    |___|   \\___/ \\______/  |_|  |_||_____||___|')
   terminal.red();
-  console.log('                                                         __    __       __________')
-  console.log('                                                        |  |  |  |     |   _______|')
-  console.log('                                                        |  |__|  |     |  |_______')
-  console.log('                                                        |        |     |________  |')
-  console.log('                                                         \\____   |  _   _______|  |')
-  console.log('                                                              |__| |_| |__________|')
+  console.log('                                                           __    __       __________')
+  console.log('                                                          |  |  |  |     |   _______|')
+  console.log('                                                          |  |__|  |     |  |_______')
+  console.log('                                                          |        |     |________  |')
+  console.log('                                                           \\____   |  _   _______|  |')
+  console.log('                                                                |__| |_| |__________|')
 }
 
 const controls = () => {
