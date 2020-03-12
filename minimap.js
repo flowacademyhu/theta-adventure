@@ -71,7 +71,7 @@ const changeMapUp = (player) => {
     
 const changeMapRight = (player) => {
   for (let i = 0; i < player.coords.x.length; i++) {
-    if (player.coords.y[i] > 28) { // right movement
+    if (player.coords.y[i] > 29) { // right movement
       currentBoardCoords.y++;
       for (let j = 0; j < player.coords.y.length; j++) {
         player.coords.y[j] -= 27;
@@ -83,7 +83,7 @@ const changeMapRight = (player) => {
 
 const changeMapLeft = (player) => {
   for (let i = 0; i < player.coords.x.length; i++) {
-    if (player.coords.y[i] < 1) {  // left movement
+    if (player.coords.y[i] < 0) {  // left movement
       currentBoardCoords.y--;
       for (let j = 0; j < player.coords.y.length; j++) {
         player.coords.y[j] += 27;
