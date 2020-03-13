@@ -187,8 +187,6 @@ draw = (board, player) => {
         line += '  '.bgBlack;
       } else if (board[i][j] === 1 && minimap.currentBoardCoords.x === 1 && minimap.currentBoardCoords.y === 0 && !inventory.inventory.includes('--@')) {
         line += '  '.bgBlack;
-      } else if (isPlayerCord(i, j, player)) {
-          line += ' *'.yellow.bgYellow;
       } else if (board[i][j] === 1) {
         line += ' 1'.gray.bgGray;
       } else if (board[i][j] === 2) {
@@ -215,6 +213,8 @@ draw = (board, player) => {
         line += '  '.bgBlack;
       } else if (isPlayerCord(i, j, player) && minimap.currentBoardCoords.x === 1 && minimap.currentBoardCoords.y === 0 && !inventory.inventory.includes('--@')) {
         line += '  '.bgBlack;
+      } else if (isPlayerCord(i, j, player)) {
+        line += ' *'.yellow.bgYellow;
       } else if (inventory.pack1Coord(i, j, inventory.pack1) || inventory.pack2Coord(i, j, inventory.pack2)) {
         line += '++'.red.bgWhite;
       } else if (board[i][j] === 8) {

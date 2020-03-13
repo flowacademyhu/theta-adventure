@@ -10,7 +10,10 @@ const colors = require('colors')
 const movingenemy = require('./movingenemy.js')
 const menuItems = require('./menuItems.js')
 const gameFinished = require('./gameFinished.js')
+const mpg = require('mpg123')
 // const gameOver = require('./gameOver.js')
+
+let player = new mpg.MpgPlayer();
 
 const stdin = process.stdin;
 stdin.setRawMode(true);
@@ -61,6 +64,7 @@ stdin.on('data', (key) => {
 });
 
 const witcher = () => {
+player.play('./musicccc.mp3')
 setInterval(smallerenemies.moveEnemy1, 100);
 setInterval(smallerenemies.moveEnemy2, 100);
 setInterval(smallerenemies.moveEnemy3, 100);
