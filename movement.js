@@ -132,7 +132,7 @@ const moveUp = (player, map) => {
   } else if (collisonUp(player, map) === true || gates.collisonGate2(player, gates.gate2, map) === true) {
     return;
   } else if (collisonUp(player, map) === true || gates.collisonGate3(player, gates.gate3, map) === true) {
-    return; 
+    return;
   } else {
     for (let i = 0; i < player.coords.x.length; i++) {
     player.coords.x[i]--;
@@ -182,5 +182,5 @@ module.exports = {
   enemyCollisonDown: enemyCollisonDown,
   enemyCollisonUp: enemyCollisonUp,
   enemyCollisonRight: enemyCollisonRight,
-  enemyCollisonLeft, enemyCollisonLeft
+  enemyCollisonLeft: enemyCollisonLeft
 }

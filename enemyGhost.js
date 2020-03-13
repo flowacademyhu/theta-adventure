@@ -56,5 +56,7 @@ const isEnemyCordGhost = (x, y, enemy) => {
 module.exports = {
   enemyGhost: enemyGhost,
   isEnemyCordGhost: isEnemyCordGhost,
-  moveEnemyGhost: moveEnemyGhost
+  moveEnemyGhost: moveEnemyGhost,
+  changeArrayElementsNegative: changeArrayElementsNegative,
+  changeArrayElementsPositive: changeArrayElementsPositive
 };
