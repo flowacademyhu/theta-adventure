@@ -62,6 +62,7 @@ const pressStartButton = (player, startButton) => {
       minimap.currentBoardCoords.x = 2;
       minimap.currentBoardCoords.y = 2;
       startGame.sg = false;
+      controlsButton.show = false;
       for (let j = 0; j < player.coords.x.length; j++) {
         player.coords.x[j] += 13;
         player.coords.y[j] -= 10;
