@@ -20,6 +20,3 @@ const gameOver = (witcher) => {
 
 // gameOver()
 
-module.exports = {
-  gameOver: gameOver
-}

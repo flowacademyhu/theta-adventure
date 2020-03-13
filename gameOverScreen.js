@@ -1,6 +1,6 @@
 const terminal = require('terminal-kit').terminal;
 
-const gameOverScreen = () => {
+const gameOver = () => {
   terminal.red();
   console.log('                                                _____                         ____                 ');
   console.log('                                               / ____|                       / __ \\                ');
@@ -8,8 +8,9 @@ const gameOverScreen = () => {
   console.log('                                              | | |_ |/ _` | \'_ ` _ \\ / _ \\ | |  | \\ \\ / / _ \ \'__|');
   console.log('                                              | |__| | (_| | | | | | |  __/ | |__| |\\ V /  __/ |   ');
   console.log('                                               \\_____|\\__,_|_| |_| |_|\\___|  \\____/  \\_/ \\___|_|   ');
+
 }
 
 module.exports = {
-  gameOverScreen: gameOverScreen
+  gameOverScreen: gameOver
 }

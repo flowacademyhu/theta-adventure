@@ -16,17 +16,25 @@ const witcherScreen = () => {
   console.log('                                                          |        |     |________  |')
   console.log('                                                           \\____   |  _   _______|  |')
   console.log('                                                                |__| |_| |__________|')
+  console.log(' ')
 }
 
 const controls = () => {
   terminal.white();
   console.log('                                                                         Up: W');
+  console.log(' ')
   console.log('                                                                       Down: S');
+  console.log(' ')
   console.log('                                                                      Right: A');
+  console.log(' ')
   console.log('                                                                       Left: D');
+  console.log(' ')
   console.log('                                                          Pick up/Use items: E');
+  console.log(' ')
   console.log('                                                                Swing sword: O');
+  console.log(' ')
   console.log('                                                                  Quit game: Q');
+  console.log(' ')
 }
 
 module.exports = {

@@ -20,4 +20,5 @@ module.exports = {
   mapreader: mapreader,
   currentBoard: currentBoard
 }
+
 // console.log(mapreader());

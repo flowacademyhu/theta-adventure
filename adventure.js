@@ -45,7 +45,7 @@ stdin.on('data', (key) => {
     gates.openGate2(draw.player, gates.gate2, inventory.inventory);
     menuItems.pressStartButton(draw.player, menuItems.startButton);
     menuItems.pressQuitButton(draw.player, menuItems.quitButton);
-    menuItems.pressReSartButton(draw.player, menuItems.reStartButton);
+    menuItems.pressControlsButton(draw.player, menuItems.controlsButton);
     inventory.healthpack(draw.player, inventory.pack1);
     inventory.healthpack(draw.player, inventory.pack2);
     }
@@ -68,6 +68,8 @@ setInterval(movingenemy.moveSleeping, 200, draw.player)
 setInterval(enemy.moveEnemyGhost, 50);
 setInterval(() => { draw.draw(map.mapreader(), draw.player)}, 75);
   }
+
+witcher();
 
 module.exports = {
   witcher: witcher,

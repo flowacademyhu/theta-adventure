@@ -7,10 +7,43 @@ const movingenemy = require('./movingenemy')
 const inventory = require('./inventory')
 const gates = require('./gates')
 
+const controlsButton = {coords: coords = {
+  x: [3],
+  y: [15]},
+  show: false
+}
+
+const isControlsButton = (x, y, controlsButton) => {
+  if (minimap.currentBoardCoords.x === 5 && minimap.currentBoardCoords.y === 0) {
+    for (let i = 0; i < controlsButton.coords.x.length; i++) {
+      if (x === controlsButton.coords.x[i] && y === controlsButton.coords.y[i]){
+        return true;
+      }
+    }
+    return false
+  }
+}
+
+const pressControlsButton = (player, controlsButton) => {
+  for (let i = 0; i < player.coords.x.length; i++) {
+    if (player.coords.x[i] === controlsButton.coords.x[0] && player.coords.y[i] === controlsButton.coords.y[0] && minimap.currentBoardCoords.x === 5 && minimap.currentBoardCoords.y === 0) {
+      if (controlsButton.show === false) {
+        controlsButton.show = true;
+        return controlsButton.show
+      } else if (controlsButton.show === true) {
+        controlsButton.show = false
+        return controlsButton.show
+      }
+    }
+  }
+}
+
 const startButton = {coords: coords = {
   x: [9],
   y: [25]
 }}
+
+let startGame = {sg: true}
 
 const isStartButtonCord = (x, y, startButton) => {
   if (minimap.currentBoardCoords.x === 5 && minimap.currentBoardCoords.y === 0) {
@@ -18,7 +51,8 @@ const isStartButtonCord = (x, y, startButton) => {
       if (x === startButton.coords.x[i] && y === startButton.coords.y[i]){
         return true;
       }
-    } return false
+    }
+    return false
   }
 }
 
@@ -27,6 +61,7 @@ const pressStartButton = (player, startButton) => {
     if (player.coords.x[i] === startButton.coords.x[0] && player.coords.y[i] === startButton.coords.y[0] && minimap.currentBoardCoords.x === 5 && minimap.currentBoardCoords.y === 0) {
       minimap.currentBoardCoords.x = 2;
       minimap.currentBoardCoords.y = 2;
+      startGame.sg = false;
       for (let j = 0; j < player.coords.x.length; j++) {
         player.coords.x[j] += 13;
         player.coords.y[j] -= 10;
@@ -49,6 +84,7 @@ const pressStartButton = (player, startButton) => {
         inventory.pack2.exist = true;
         inventory.inventory = [];
       }
+      return startGame.sg
     }
   }
 }
@@ -115,5 +151,9 @@ module.exports = {
   pressQuitButton: pressQuitButton,
   reStartButton: reStartButton,
   isReStartButtonCord: isReStartButtonCord,
-  pressReSartButton: pressReSartButton
+  pressReSartButton: pressReSartButton,
+  controlsButton: controlsButton,
+  isControlsButton: isControlsButton,
+  pressControlsButton: pressControlsButton,
+  startGame: startGame
 }

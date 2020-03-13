@@ -7,12 +7,13 @@ const gates = require('./gates.js');
 const sword = require('./sword.js');
 const movement = require('./movement.js');
 const smallerenemies = require('./smallerenemies.js');
-const gameOver = require('./gameOver.js');
+// const gameOver = require('./gameOver.js');
 const gameFinished = require('./gameFinished.js');
 const movingenemy = require('./movingenemy.js');
 const minimap = require('./minimap.js')
 const menuScreen = require('./menuScreen.js')
 const menuItems = require('./menuItems.js')
+const gameOverScreen = require('./gameOverScreen.js')
 
 const player = {coords: coords = {
                 x: [13, 14, 13, 14],
@@ -72,6 +73,17 @@ const isPlayerCord = (x, y, player) => {
   return false;
 }
 
+const gameOver = () => {
+  terminal.red();
+  console.log('                                                _____                         ____                 ');
+  console.log('                                               / ____|                       / __ \\                ');
+  console.log('                                              | |  __  __ _ _ __ ___   ___  | |  | |_   _____ _ __ ');
+  console.log('                                              | | |_ |/ _` | \'_ ` _ \\ / _ \\ | |  | \\ \\ / / _ \ \'__|');
+  console.log('                                              | |__| | (_| | | | | | |  __/ | |__| |\\ V /  __/ |   ');
+  console.log('                                               \\_____|\\__,_|_| |_| |_|\\___|  \\____/  \\_/ \\___|_|   ');
+  console.log(' ')
+}
+
 draw = (board, player) => {
   gates.openGate3(gates.gate3, movingenemy.enemy5);
   if (gameFinished.finishGame(player, 0, 2) === true) {
@@ -79,7 +91,7 @@ draw = (board, player) => {
   gameFinished.theEnd();
   } else {
     console.clear()
-  let line = "                                    ";
+  let line = "                                        ";
   movement.enemyCollisonDown(player, playerBottomChange(player), playerTopChange(player), enemy.enemyGhost, map.mapreader(), 4, 0);
   movement.enemyCollisonRight(player, playerRightChange(player), playerLeftChange(player), enemy.enemyGhost, map.mapreader(), 4, 0);
   movement.enemyCollisonLeft(player, playerLeftChange(player), playerRightChange(player), enemy.enemyGhost, map.mapreader(), 4, 0);
@@ -127,8 +139,8 @@ draw = (board, player) => {
         line += ' S'.black.bgGreen;
       } else if (menuItems.isQuitButtonCord(i, j, menuItems.quitButton)) {
         line += ' Q'.black.bgRed;
-      } else if (menuItems.isReStartButtonCord(i, j, menuItems.reStartButton)) {
-        line += '  '.blue.bgBlue;
+      } else if (menuItems.isControlsButton(i, j, menuItems.controlsButton)) {
+        line += ' C'.black.bgBlue;
       } else if (sword.drawSwordBlade(i, j, player)) {
         line += swordBladeUp.white.bgBlack;
         sword.swordUp = true;
@@ -211,7 +223,7 @@ draw = (board, player) => {
         line += '  '.bgBlack;
       }
     }
-    line += '\n                                    ';
+    line += '\n                                        ';
   }
   movingenemy.sleepingEnemyHit(player, inventory.inventory, movingenemy.sleepingEnemy, sword.swordUp, map.mapreader());
   movingenemy.enemy5Hit(player, inventory.inventory, movingenemy.enemy5, sword.swordUp, map.mapreader());
@@ -220,6 +232,15 @@ draw = (board, player) => {
   smallerenemies.enemy3Hit(player, inventory.inventory, smallerenemies.enemy3, sword.swordUp, map.mapreader());
   smallerenemies.enemy4Hit(player, inventory.inventory, smallerenemies.enemy4, sword.swordUp, map.mapreader());
   enemy.enemyGhostHit(player, inventory.inventory, enemy.enemyGhost, sword.swordUp, map.mapreader());
+  if (menuItems.startGame.sg === true && menuItems.controlsButton.show === false) {
+    menuScreen.witcherScreen();
+  }
+  if (player.life === 'You dead boi' && menuItems.controlsButton.show === false) {
+    gameOver();
+  }
+  if (menuItems.controlsButton.show === true) {
+    menuScreen.controls();
+  }
   console.log(line);
   console.log('Lives: ', player.life, '<3')
   console.log('Inventory:')
