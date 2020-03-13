@@ -66,7 +66,7 @@ const pressStartButton = (player, startButton) => {
       for (let j = 0; j < player.coords.x.length; j++) {
         player.coords.x[j] += 13;
         player.coords.y[j] -= 10;
-        player.life = 50000000000
+        player.life = 5
         enemy.enemyGhost.life = 3
         smallerenemies.enemy1.life = 2
         smallerenemies.enemy2.life = 2
@@ -83,7 +83,7 @@ const pressStartButton = (player, startButton) => {
         inventory.sword.exists = true
         inventory.pack1.exist = true;
         inventory.pack2.exist = true;
-        inventory.inventory = ['-<==', 'o-'];
+        inventory.inventory = [];
       }
       return startGame.sg
     }
