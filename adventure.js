@@ -9,6 +9,7 @@ const smallerenemies = require('./smallerenemies.js')
 const colors = require('colors')
 const movingenemy = require('./movingenemy.js')
 const menuItems = require('./menuItems.js')
+const gameFinished = require('./gameFinished.js')
 // const gameOver = require('./gameOver.js')
 
 const stdin = process.stdin;
@@ -48,6 +49,7 @@ stdin.on('data', (key) => {
     menuItems.pressControlsButton(draw.player, menuItems.controlsButton);
     inventory.healthpack(draw.player, inventory.pack1);
     inventory.healthpack(draw.player, inventory.pack2);
+    gameFinished.finishGame(draw.player, 0, 2)
     }
   if (key === 'o') {
     sword.swordPos();
@@ -63,7 +65,7 @@ setInterval(smallerenemies.moveEnemy1, 100);
 setInterval(smallerenemies.moveEnemy2, 100);
 setInterval(smallerenemies.moveEnemy3, 100);
 setInterval(smallerenemies.moveEnemy4, 100);
-setInterval(movingenemy.movingEnemy, 400, draw.player)
+setInterval(movingenemy.movingEnemy, 200, draw.player)
 setInterval(movingenemy.moveSleeping, 200, draw.player)
 setInterval(enemy.moveEnemyGhost, 50);
 setInterval(() => { draw.draw(map.mapreader(), draw.player)}, 75);

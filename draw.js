@@ -86,9 +86,9 @@ const gameOver = () => {
 
 draw = (board, player) => {
   gates.openGate3(gates.gate3, movingenemy.enemy5);
-  if (gameFinished.finishGame(player, 0, 2) === true) {
-  console.clear();
-  gameFinished.theEnd();
+  if (gameFinished.princessSaved.is === true) {
+    console.clear()
+    gameFinished.theEnd()
   } else {
     console.clear()
   let line = "                                        ";
